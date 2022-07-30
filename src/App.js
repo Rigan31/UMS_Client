@@ -1,28 +1,32 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import LandingPage from './components/pages/LandingPage'
 import LoginPage from './components/pages/LoginPage'
-import RegisterPage from './components/pages/RegisterPage'
+import RegPage from './components/pages/RegPage'
+import ProfilePage from './components/pages/ProfilePage'
 import ForgetPasswordPage from './components/pages/ForgetPasswordPage'
-import HomePage from './components/pages/HomePage'
-
 import './App.css'
 
+
+var logged_in = ""
+
 export default function App() {
+
+
     return (
-        <Router>
-            <div>
-                <Switch>
-                    <Route exact path="/" component={ LandingPage } />
-                    <Route path="/login" component={ LoginPage } />
-                    <Route path="/register" component={ RegisterPage } />
-                    <Route path="/forget-password" component={ ForgetPasswordPage } />
-                    <Route path="/home" component={ HomePage } />
-                </Switch>
-                <Footer />
-            </div>
-        </Router>
+        <BrowserRouter>
+                <Routes>
+                    <Route exact path="/" element={ <LoginPage/> } />
+                    <Route path="/login" element={ <LoginPage/> } />
+                    <Route path="/logout" element={ <LoginPage/> } />
+                    <Route path="/reg" element={ <RegPage/> } />
+                    <Route path="/profile" element={ <ProfilePage/> } />
+                    <Route path="/forget-password" element={ <ForgetPasswordPage/> } />
+                </Routes>
+                
+            
+        </BrowserRouter>
     )
 }
 
@@ -42,4 +46,8 @@ const FooterStyle = {
     margin: 0,
     width: "100%",
     opacity: ".5"
+}
+
+export {
+    logged_in
 }
