@@ -1,12 +1,15 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import LandingPage from './components/pages/LandingPage'
-import LoginPage from './components/pages/LoginPage'
+import LoginPage from './Services/Login/pages/LoginPage'
 import RegPage from './components/pages/RegPage'
 import ProfilePage from './components/pages/ProfilePage'
-import ForgetPasswordPage from './components/pages/ForgetPasswordPage'
-import './App.css'
+
+// import './App.css'
+import AddCourse from './Services/Course/pages/AddCourse'
+import CourseList from './Services/Course/pages/CourseList'
+import SingleCourse from './Services/Course/pages/SingleCourse'
+import StudentRegister from './Services/Course/pages/StudentRegister'
 
 
 var logged_in = ""
@@ -19,10 +22,13 @@ export default function App() {
                 <Routes>
                     <Route exact path="/" element={ <LoginPage/> } />
                     <Route path="/login" element={ <LoginPage/> } />
+                    <Route path="/addcourse" element={<AddCourse />} />
+                    <Route path="/courselist" element={<CourseList />} />
                     <Route path="/logout" element={ <LoginPage/> } />
                     <Route path="/reg" element={ <RegPage/> } />
+                    <Route path="/singlecourse/:courseId" element={ <SingleCourse/> } />
                     <Route path="/profile" element={ <ProfilePage/> } />
-                    <Route path="/forget-password" element={ <ForgetPasswordPage/> } />
+                    <Route path="/student_register" element={ <StudentRegister/> } />
                 </Routes>
                 
             
