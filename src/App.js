@@ -15,7 +15,10 @@ import UploadResultPage from './Services/Result/pages/UploadResultPage'
 import ShowResultPage from './Services/Result/pages/ShowResultPage'
 import AdminProfilePage from './Services/Profile/pages/AdminProfilePage'
 import AddStudentPage from './Services/Profile/pages/AddStudentPage'
-
+import LibraryAdminHome from './Services/Library/pages/admin/AdminHome'
+import AddBook from './Services/Library/pages/admin/AddBook'
+import AdminShowBooks from './Services/Library/pages/admin/AdminShowBooks'
+import AdminShowBorrowInfo from './Services/Library/pages/admin/AdminShowBorrowInfo'
 
 var logged_in = ""
 
@@ -40,6 +43,11 @@ export default function App() {
                     <Route path="/upload_result" element={ <UploadResultPage/> } />
                     <Route path="/show_result" element={ <ShowResultPage/> } />
                     <Route path="/student_register" element={ <StudentRegister/> } />
+
+                    <Route path="/library_admin_home" element={ <LibraryAdminHome/> } />
+                    <Route path="/add_book" element={ <AddBook/> } />
+                    <Route path="/admin_show_books" element={ <AdminShowBooks/> } />
+                    <Route path="/admin_show_borrow_info" element={ <AdminShowBorrowInfo/> } />
                 </Routes>
                 
             
