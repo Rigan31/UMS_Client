@@ -10,7 +10,7 @@ export default function UploadResultPage() {
     const [data, setData] = useState([])
     useEffect(() => {
         console.log("use effect e dhuksi")
-        fetch("/get_results").then(
+        fetch("http://localhost:5004/get_results").then(
         response => response.json()
         ).then(
         data => {

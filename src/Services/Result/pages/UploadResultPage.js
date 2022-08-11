@@ -10,7 +10,7 @@ export default function UploadResultPage() {
     const [courses, setCourses] = useState([])
     useEffect(() => {
         console.log("use effect e dhuksi")
-        fetch("/get_sessions_depts").then(
+        fetch("http://localhost:5004/get_sessions_depts").then(
         response => response.json()
         ).then(
         data => {
@@ -18,12 +18,13 @@ export default function UploadResultPage() {
             setSessionsDepts(data);
         }
         )
-    }, [])
+    }, [])  
+    let session = 0;
 
     const get_courses= () => {
-        const session = document.getElementById("session").value;
+        session = document.getElementById("session").value;
         const dept = document.getElementById("dept").value;
-        let str = "/get_courses?session_id=" + session + "&dept_id=" + dept; 
+        let str = "http://localhost:5004/get_courses?session_id=" + session + "&dept_id=" + dept; 
         fetch(str).then(
             response => response.json()
             ).then(
@@ -42,6 +43,7 @@ export default function UploadResultPage() {
         const [file, setFile] = useState();
         const [array, setArray] = useState([]);
         const [course, setCourse] = useState([]);
+        
       
         const fileReader = new FileReader();
       
@@ -86,9 +88,10 @@ export default function UploadResultPage() {
             navigate('/show_result');
         }
         const send_csv_file = () => {
-            Axios.post("http://localhost:5000/result_file", {
+            Axios.post("http://localhost:5004/result_file", {
                 data: array,
                 course: course,
+                session: session,
             }).then((response) => {
                 alert("Result Uploaded!");
                 routeChangeToUploadResult();
