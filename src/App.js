@@ -25,6 +25,8 @@ import AdminShowBorrowInfoEdit from './Services/Library/pages/admin/AdminShowBor
 import LibraryStudentHome from './Services/Library/pages/student/StudentHome'
 import StudentShowBooks from './Services/Library/pages/student/StudentShowBooks'
 import StudentShowBorrowInfo from './Services/Library/pages/student/StudentShowBorrowInfo'
+import UploadFeedback from './Services/Feedback/pages/student/UploadFeedback'
+import ShowFeedbacks from './Services/Feedback/pages/admin/ShowFeedbacks'
 
 var logged_in = ""
 
@@ -61,6 +63,9 @@ export default function App() {
                     <Route path="/library_student_home" element={ <LibraryStudentHome/> } />
                     <Route path="/student_show_books" element={ <StudentShowBooks/> } />
                     <Route path="/student_show_borrow_info" element={ <StudentShowBorrowInfo/> } />
+
+                    <Route path="/upload_feedback" element={ <UploadFeedback/> } />
+                    <Route path="/show_feedbacks" element={ <ShowFeedbacks/> } />
                 </Routes>
                 
             

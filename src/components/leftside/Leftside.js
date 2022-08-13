@@ -42,10 +42,10 @@ const sidebarNavItems = [
         section: 'Apply for Scholarship'
     },
     {
-        display: 'Final Exam Schedule',
+        display: 'Feedback',
         icon: <i class='bx bx-bookmark-alt' ></i>,
-        to: '/exam',
-        section: 'Final Exam Schedule'
+        to: '/upload_feedback',
+        section: 'Feedback'
     },
     {
         display: 'Library',
