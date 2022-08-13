@@ -17,8 +17,14 @@ import AdminProfilePage from './Services/Profile/pages/AdminProfilePage'
 import AddStudentPage from './Services/Profile/pages/AddStudentPage'
 import LibraryAdminHome from './Services/Library/pages/admin/AdminHome'
 import AddBook from './Services/Library/pages/admin/AddBook'
+import GrantBook from './Services/Library/pages/admin/GrantBook'
 import AdminShowBooks from './Services/Library/pages/admin/AdminShowBooks'
+import AdminShowBooksEdit from './Services/Library/pages/admin/AdminShowBooksEdit'
 import AdminShowBorrowInfo from './Services/Library/pages/admin/AdminShowBorrowInfo'
+import AdminShowBorrowInfoEdit from './Services/Library/pages/admin/AdminShowBorrowInfoEdit'
+import LibraryStudentHome from './Services/Library/pages/student/StudentHome'
+import StudentShowBooks from './Services/Library/pages/student/StudentShowBooks'
+import StudentShowBorrowInfo from './Services/Library/pages/student/StudentShowBorrowInfo'
 
 var logged_in = ""
 
@@ -46,8 +52,15 @@ export default function App() {
 
                     <Route path="/library_admin_home" element={ <LibraryAdminHome/> } />
                     <Route path="/add_book" element={ <AddBook/> } />
+                    <Route path="/grant_book" element={ <GrantBook/> } />
                     <Route path="/admin_show_books" element={ <AdminShowBooks/> } />
+                    <Route path="/admin_show_books_edit" element={ <AdminShowBooksEdit/> } />
                     <Route path="/admin_show_borrow_info" element={ <AdminShowBorrowInfo/> } />
+                    <Route path="/admin_show_borrow_info_edit" element={ <AdminShowBorrowInfoEdit/> } />
+
+                    <Route path="/library_student_home" element={ <LibraryStudentHome/> } />
+                    <Route path="/student_show_books" element={ <StudentShowBooks/> } />
+                    <Route path="/student_show_borrow_info" element={ <StudentShowBorrowInfo/> } />
                 </Routes>
                 
             

@@ -13,6 +13,9 @@ export default function AdminHome() {
                 <div class="card"><Link to="/add_book">Add Book</Link></div>
             </div>
             <div class="column">
+                <div class="card"><Link to="/grant_book">Grant Book</Link></div>
+            </div>
+            <div class="column">
                 <div class="card"><Link to="/admin_show_books">Show Books</Link></div>
             </div>
             <div class="column">

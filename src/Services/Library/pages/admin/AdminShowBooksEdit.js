@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios'
 
-export default function AdminShowBooks() {
+export default function AdminShowBooksEdit() {
     const [backendData, setBackendData] = useState("")
+    const [id, setId] = useState("")
+    const [quantity, setQuantity] = useState("")
     useEffect(() => {
         fetch("http://localhost:5009/get_books").then(
         response => response.json()
@@ -15,6 +17,23 @@ export default function AdminShowBooks() {
         )
     }, [])
     
+    let navigate = useNavigate(); 
+        const routeChangeToAdminShowBooks= () =>{ 
+            alert("Books Updated!");
+            navigate('/admin_show_books');
+        }
+
+    const update_books= (e) => {
+        e.preventDefault();
+        console.log('id : ', id);
+        console.log('quantity : ', quantity)
+        Axios.post("http://localhost:5009/update_books", {
+            id: id,
+            quantity: quantity,
+        }).then((response) => {
+            
+        });
+    }
 
     return (    
         <div className="container rounded bg-white mt-5 mb-5">
@@ -22,7 +41,7 @@ export default function AdminShowBooks() {
                 <h1 class="display-4" align="center">Books List</h1>
                 
                 <hr class="my-4" />
-                <a class="btn btn-primary btn-lg" href="http://localhost:3000/admin_show_books_edit" role="button">Edit</a>
+                <p align="center">Edit Book Quantity</p>
             </div>
             <table class="table">
                 <thead>
@@ -44,7 +63,8 @@ export default function AdminShowBooks() {
                         <tr>
                         <td>{result.name}</td>
                         <td>{result.author}</td>
-                        <td>{result.quantity}</td>
+                        <td><input id="name" type="text" class="form-control" defaultValue={result.quantity} onChange={ e => {setQuantity(e.target.value) }} /></td>
+                        <td><a class="btn btn-primary btn-lg" align="center" href="#" role="button" onClick={ e => {setId(result.id); update_books(e) }}>Change</a></td>
                         </tr>
                         
                     )
@@ -53,6 +73,17 @@ export default function AdminShowBooks() {
                 }  
                 </tbody>
                 </table>
+                <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    
+                }}
+                >
+                <a class="btn btn-primary btn-lg" align="center" href="#" role="button" onClick={ routeChangeToAdminShowBooks }>Update</a>
+                </div>
+                
         </div>
     )
 }
