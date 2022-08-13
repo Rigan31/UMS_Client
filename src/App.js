@@ -15,9 +15,10 @@ import UploadResultPage from './Services/Result/pages/ShowResultPage'
 import ShowResultPage from './Services/Result/pages/ShowResultPage'
 import AdminProfilePage from './Services/Profile/pages/AdminProfilePage'
 import AddStudentPage from './Services/Profile/pages/AddStudentPage'
+import OfferCourse from './Services/Course/pages/OfferCourse'
+import ShowOfferList from './Services/Course/pages/ShowOfferList'
+import SingleOfferCourse from './Services/Course/pages/SingleOfferCourse'
 
-
-var logged_in = ""
 
 export default function App() {
 
@@ -40,31 +41,12 @@ export default function App() {
                     <Route path="/upload_result" element={ <UploadResultPage/> } />
                     <Route path="/show_result" element={ <ShowResultPage/> } />
                     <Route path="/student_register" element={ <StudentRegister/> } />
+                    <Route path="/head/offercourse" element={ <OfferCourse /> } />
+                    <Route path="/head/showofferlist" element={<ShowOfferList /> } />
+                    <Route path="/head/singleoffercourse/:offerCourseId" element={ <SingleOfferCourse/> } />
                 </Routes>
                 
             
         </BrowserRouter>
     )
-}
-
-const Footer = () => {
-    return (
-        <p className="text-center" style={ FooterStyle }>Designed & coded by <a href="https://izemspot.netlify.com" target="_blank" rel="noopener noreferrer">IZEMSPOT</a></p>
-    )
-}
-
-const FooterStyle = {
-    background: "#222",
-    fontSize: ".8rem",
-    color: "#fff",
-    position: "absolute",
-    bottom: 0,
-    padding: "1rem",
-    margin: 0,
-    width: "100%",
-    opacity: ".5"
-}
-
-export {
-    logged_in
 }

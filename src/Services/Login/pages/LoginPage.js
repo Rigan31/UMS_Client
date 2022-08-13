@@ -8,7 +8,8 @@ import Button from 'react-bootstrap/Button'
 import loginImg from '../assets/images/login.webp'
 
 
-export default function LoginPage( ) {
+export default function LoginPage() {
+    const [who, setWho] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginState, setLoginState] = useState("");
@@ -36,11 +37,15 @@ export default function LoginPage( ) {
     const login= (e) => {
         e.preventDefault();
         console.log("sending to server");
+        console.log("who: ", who);
         console.log("username: ", username);
         console.log("password: ", password);
+
+        
         Axios.post("http://localhost:5000/login", {
+            who: who,
             username: username, 
-            password: password 
+            password: password
         }).then((response) => {
             console.log(response);
             console.log(response.data.result);
@@ -66,7 +71,7 @@ export default function LoginPage( ) {
                     
                 <Form onSubmit={(e)=> login(e)}>
                     <Form.Group className="formGroup" controlId="formGridState">
-                        <Form.Select className='selectLogin' id="loginas" >
+                        <Form.Select className='selectLogin' id="loginas" onChange={e => setWho(e.target.value)}>
                             <option value="Student">Login As Student</option>
                             <option value="Teacher">Login As Teacher</option>
                             <option value="Admin">Login As Admin</option>
