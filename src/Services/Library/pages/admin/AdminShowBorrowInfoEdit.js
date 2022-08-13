@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios'
+import SidebarLibraryAdmin from '../../../../components/layout/SidebarLibraryAdmin';
 
 export default function AdminShowBorrowInfo() {
     const [backendData, setBackendData] = useState("")
@@ -36,6 +37,7 @@ export default function AdminShowBorrowInfo() {
     }
     return (    
         <div className="container rounded bg-white mt-5 mb-5">
+           
             <div class="jumbotron">
                 <h1 class="display-4" align="center">Books Borrow List</h1>
                 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios'
 import '../../assets/css/AdminHome.css';
+import SidebarLibraryAdmin from '../../../../components/layout/SidebarLibraryAdmin';
 
 export default function AddBook() {
     const [book_name, setBookName] = useState([]);
@@ -28,6 +29,7 @@ export default function AddBook() {
 
     return (    
         <div>
+            <SidebarLibraryAdmin/>
             <div class="jumbotron text-center" id="jumbotron">
                 <h1 class="display-3">Add Book</h1>
                 <p class="lead">Book Description</p>

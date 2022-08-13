@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Axios from 'axios'
 import '../../assets/css/AdminHome.css';
 import TextField from '@material-ui/core/TextField';
+import SidebarLibraryAdmin from '../../../../components/layout/SidebarLibraryAdmin';
 
 export default function GrantBook() {
     const [student_id, setStudentId] = useState([]);
@@ -39,6 +40,7 @@ export default function GrantBook() {
     }
     return (    
         <div>
+            <SidebarLibraryAdmin/>
             <div class="jumbotron text-center" id="jumbotron">
                 <h1 class="display-3">Grant Book</h1>
                 <p class="lead">Book Description</p>
@@ -62,18 +64,19 @@ export default function GrantBook() {
                     </select>
                     <small id="emailHelp" class="form-text text-muted">Select the book name you want to grant</small>
                 </div>
-                <div class="form-group col-md-offset-5 col-md-5" padding-left="500px">
+                <div class="form-group box">
                     <label for="student id">Student ID</label>
                     <input type="name" class="form-control" id="student_id" placeholder="Student ID" onChange={e => setStudentId(e.target.value)}/>
                 </div>
-                <div class="form-group" style={{
+                <div style={{
                 margin: 'auto',
                 display: 'block',
                 width: 'fit-content'
                 }}>
+                    <label>Choose due date</label><br/>
                 <TextField
                     id="date"
-                    label="Choose due date"
+                    
                     type="date"
                     defaultValue="2023-01-01"
                     InputLabelProps={{
@@ -81,7 +84,7 @@ export default function GrantBook() {
                     }}
                 />          
                 </div>
-                    
+                    <br/>
                     <button type="submit" class="btn btn-primary mb-2" onClick={ e => grant_book(e) }>Grant</button>
                 </form>
             </div>

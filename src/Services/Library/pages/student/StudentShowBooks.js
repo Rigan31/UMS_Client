@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios'
+import Sidebar from '../../../../components/layout/Sidebar';
 
 export default function StudentShowBooks() {
     const [backendData, setBackendData] = useState("")
@@ -17,6 +18,7 @@ export default function StudentShowBooks() {
 
     return (    
         <div className="container rounded bg-white mt-5 mb-5">
+            <Sidebar />
             <div class="jumbotron">
                 <h1 class="display-4" align="center">Books List</h1>
                 
