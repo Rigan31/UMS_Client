@@ -18,6 +18,7 @@ import AddStudentPage from './Services/Profile/pages/AddStudentPage'
 import OfferCourse from './Services/Course/pages/OfferCourse'
 import ShowOfferList from './Services/Course/pages/ShowOfferList'
 import SingleOfferCourse from './Services/Course/pages/SingleOfferCourse'
+import AddOutline from './Services/Course/pages/AddOutline'
 
 
 export default function App() {
@@ -44,6 +45,13 @@ export default function App() {
                     <Route path="/head/offercourse" element={ <OfferCourse /> } />
                     <Route path="/head/showofferlist" element={<ShowOfferList /> } />
                     <Route path="/head/singleoffercourse/:offerCourseId" element={ <SingleOfferCourse/> } />
+                    
+                    
+                    
+                    
+                    
+                    <Route path="/teacher/addoutline" element={ <AddOutline/> } />
+
                 </Routes>
                 
             
