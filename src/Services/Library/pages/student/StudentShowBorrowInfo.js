@@ -7,17 +7,10 @@ import Sidebar from '../../../../components/layout/Sidebar';
 
 export default function AdminShowBorrowInfo() {
     const [backendData, setBackendData] = useState("")
-    const [loged_in, setLoggedIn] = useState("")
+
     useEffect(() => {
-        fetch("http://localhost:5000/login").then(
-        response => response.json()
-        ).then(
-        data => {
-            setLoggedIn(data)
-            console.log('logged in: ', data.loggedIn)
-        }
-        )
-        fetch("http://localhost:5009/get_borrowed_books").then(
+        let logged_in = '1705034'
+        fetch("http://localhost:5009/get_student_borrowed_books?logged_in="+logged_in).then(
         response => response.json()
         ).then(
         data => {
