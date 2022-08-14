@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
-import { useLocation, useParams, Link } from "react-router-dom";
+import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
 
 
 const SingleCard= () => {
@@ -20,6 +20,7 @@ const SingleCard= () => {
 
     const url = "http://localhost:5022/payment/smart_card?student_id=" + std_id + "&card_no=" + card_no; 
     const postUrl = "http://localhost:5022/payment/update_smart_card"; 
+    const delUrl = "http://localhost:5022/payment/delete_smart_card";
 
     const [backendData, setBackendData] = useState([]);
     const [show, setShow] = useState(false);
@@ -53,8 +54,7 @@ const SingleCard= () => {
       return data.data;
     }
 
-
-
+    
     function submit(e){
         e.preventDefault();
         Axios.patch(postUrl, {
@@ -80,6 +80,33 @@ const SingleCard= () => {
         newData[e.target.id] = e.target.value
         setData(newData)
     }
+
+
+
+    let navigate = useNavigate(); 
+    const routeChangeToProfile = () =>{ 
+        const url = `../smart_card_list`;
+        navigate(url);
+    }
+
+    function deleteCard(e){
+        e.preventDefault();
+        Axios.delete(delUrl, {data: {
+            student_id: std_id
+        }})
+        .then(res=>{
+            
+            if(res.data.status == "success") {
+                routeChangeToProfile();
+            }
+            else{
+                alert('Data is invaild');
+            }
+        })
+    }
+
+
+
 
     return (
         <div>
@@ -142,6 +169,14 @@ const SingleCard= () => {
                             <span>&nbsp; &nbsp;</span>
                             <Button variant="primary">
                                 <a href="smart_card_list" style={{color:'white'}}>Go Back</a>
+                            </Button>
+                            <span>&nbsp; &nbsp;</span>
+                            <Button variant="primary">
+                                <a href={`payment_list?type=single&student_id=${std_id}`} style={{color:'white'}}>Payment List</a>
+                            </Button>
+                            <span>&nbsp; &nbsp;</span>
+                            <Button variant="danger" onClick={(e)=> deleteCard(e)}>
+                                Delete
                             </Button>
                         </Row>
                         </Form>

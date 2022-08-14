@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
-import { useLocation, useParams, Link } from "react-router-dom";
+import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
 
 
 const SinglePayment= () => {
@@ -23,6 +23,7 @@ const SinglePayment= () => {
     const postUrl_normalUpdate = "http://localhost:5022/payment/update_payment"; 
     const postUrl_studentIdUpdate = "http://localhost:5022/payment/update_payment_details?type=student"; 
     const postUrl_transactionUpdate = "http://localhost:5022/payment/update_payment_details?type=paid"; 
+    const delUrl = "http://localhost:5022/payment/delete_payment";
 
     const [backendData, setBackendData] = useState([]);
     const [show, setShow] = useState(false);
@@ -99,6 +100,40 @@ const SinglePayment= () => {
         newData[e.target.id] = e.target.value
         setData(newData)
     }
+
+
+
+    
+
+
+    let navigate = useNavigate(); 
+    const routeChangeToProfile = () =>{ 
+        const url = `../payment_list?type=single&student_id=${std_id}`;
+        navigate(url);
+    }
+
+    function deletePayment(e){
+        e.preventDefault();
+        Axios.delete(delUrl, {data: {
+            student_id: std_id,
+            id: id
+        }})
+        .then(res=>{
+            
+            if(res.data.status == "success") {
+                routeChangeToProfile();
+            }
+            else{
+                alert('Data is invaild');
+            }
+        })
+    }
+
+
+
+
+
+
 
     return (
         <div>
@@ -216,10 +251,16 @@ const SinglePayment= () => {
                                     
                                 :  
                                 
-                                    <Button variant="primary">
-                                        <a href={`addtransaction?student_id=${payment.student_id}&amount=${payment.amount}&type=${payment.type}&type_id=${payment.id}`} 
-                                        style={{color:'white'}}>Add Transaction</a>
-                                    </Button>
+                                    <div>
+                                        <Button variant="primary">
+                                            <a href={`addtransaction?student_id=${payment.student_id}&amount=${payment.amount}&type=${payment.type}&type_id=${payment.id}`} 
+                                            style={{color:'white'}}>Add Transaction</a>
+                                        </Button>
+                                        <span>&nbsp; &nbsp;</span>
+                                        <Button variant="danger" onClick={(e)=> deletePayment(e)}>
+                                            Delete
+                                        </Button>
+                                    </div>
                             }
                         </Row>
                         </Form>
