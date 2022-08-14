@@ -13,12 +13,6 @@ body {
   padding: 0 10px;
 }
 
-.column2 {
-  float: center;
-  width: 100%;
-  padding: 0 10px;
-}
-
 /* Remove extra left and right margins, due to padding in columns */
 .row {margin: 0 -5px;}
 

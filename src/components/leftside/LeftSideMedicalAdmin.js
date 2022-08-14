@@ -8,62 +8,27 @@ const sidebarNavItems = [
     {
         display: 'Homepage',
         icon: <i className='bx bx-home'></i>,
-        to: '/',
-        section: ''
+        to: '/medical_admin_home',
+        section: 'Homepage'
     },
     {
-        display: 'Profile',
+        display: 'Add Doctor',
         icon: <i class='bx bxs-user-circle'></i>,
-        to: '/profile',
-        section: 'profile'
+        to: '/medical_add_doctor',
+        section: 'Add Doctor'
     },
     {
-        display: 'Registration',
+        display: 'Schedule',
         icon: <i class='bx bxs-registered' ></i>,
-        to: '/registration',
-        section: 'registration'
+        to: '/medical_admin_show_schedule',
+        section: 'Doctors` Schedule'
     },
+    ,
     {
-        display: 'View Grades',
-        icon: <i class='bx bx-book' ></i>,
-        to: '/grades',
-        section: 'View Grades'
-    },
-    {
-        display: 'Apply for Scholarship',
-        icon: <i class='bx bxs-graduation' ></i>,
-        to: '/scholarship',
-        section: 'Apply for Scholarship'
-    },
-    {
-        display: 'Dues Status',
-        icon: <i class='bx bx-wallet' ></i>,
-        to: '/dues',
-        section: 'Apply for Scholarship'
-    },
-    {
-        display: 'Feedback',
-        icon: <i class='bx bx-bookmark-alt' ></i>,
-        to: '/upload_feedback',
-        section: 'Feedback'
-    },
-    {
-        display: 'Library',
-        icon: <i class='bx bx-library' ></i>,
-        to: '/library_student_home',
-        section: 'Library'
-    },
-    {
-        display: 'My Advisor',
-        icon: <i class='bx bxs-user-voice' ></i>,
-        to: '/advisor',
-        section: 'Advisor'
-    },
-    {
-        display: 'Medical Center',
+        display: 'Appointment Requests',
         icon: <i class='bx bx-color' ></i>,
-        to: '/medical_student_home',
-        section: 'Medical Center'
+        to: '/medical_app_request',
+        section: 'Appointment Requests'
     },
     {
         display: 'Logout',

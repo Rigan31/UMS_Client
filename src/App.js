@@ -15,6 +15,7 @@ import UploadResultPage from './Services/Result/pages/UploadResultPage'
 import ShowResultPage from './Services/Result/pages/ShowResultPage'
 import AdminProfilePage from './Services/Profile/pages/AdminProfilePage'
 import AddStudentPage from './Services/Profile/pages/AddStudentPage'
+
 import LibraryAdminHome from './Services/Library/pages/admin/AdminHome'
 import AddBook from './Services/Library/pages/admin/AddBook'
 import GrantBook from './Services/Library/pages/admin/GrantBook'
@@ -25,8 +26,19 @@ import AdminShowBorrowInfoEdit from './Services/Library/pages/admin/AdminShowBor
 import LibraryStudentHome from './Services/Library/pages/student/StudentHome'
 import StudentShowBooks from './Services/Library/pages/student/StudentShowBooks'
 import StudentShowBorrowInfo from './Services/Library/pages/student/StudentShowBorrowInfo'
+
 import UploadFeedback from './Services/Feedback/pages/student/UploadFeedback'
 import ShowFeedbacks from './Services/Feedback/pages/admin/ShowFeedbacks'
+
+import MedicalAddDoctor from './Services/Medical/pages/admin/MedicalAddDoctor'
+import MedicalAdminHome from './Services/Medical/pages/admin/MedicalAdminHome'
+import MedicalAdminShowSchedule from './Services/Medical/pages/admin/MedicalAdminShowSchedule'
+import MedicalAdminShowScheduleEdit from './Services/Medical/pages/admin/MedicalAdminShowScheduleEdit'
+import MedicalAppRequest from './Services/Medical/pages/admin/MedicalAppRequest'
+import MedicalStudentApp from './Services/Medical/pages/student/MedicalStudentApp'
+import MedicalStudentAppHistory from './Services/Medical/pages/student/MedicalStudentAppHistory'
+import MedicalStudentHome from './Services/Medical/pages/student/MedicalStudentHome'
+import MedicalStudentShowSchedule from './Services/Medical/pages/student/MedicalStudentShowSchedule'
 
 var logged_in = ""
 
@@ -59,13 +71,22 @@ export default function App() {
                     <Route path="/admin_show_books_edit" element={ <AdminShowBooksEdit/> } />
                     <Route path="/admin_show_borrow_info" element={ <AdminShowBorrowInfo/> } />
                     <Route path="/admin_show_borrow_info_edit" element={ <AdminShowBorrowInfoEdit/> } />
-
                     <Route path="/library_student_home" element={ <LibraryStudentHome/> } />
                     <Route path="/student_show_books" element={ <StudentShowBooks/> } />
                     <Route path="/student_show_borrow_info" element={ <StudentShowBorrowInfo/> } />
 
                     <Route path="/upload_feedback" element={ <UploadFeedback/> } />
                     <Route path="/show_feedbacks" element={ <ShowFeedbacks/> } />
+
+                    <Route path="/medical_add_doctor" element={ <MedicalAddDoctor/> } />
+                    <Route path="/medical_admin_home" element={ <MedicalAdminHome/> } />
+                    <Route path="/medical_admin_show_schedule" element={ <MedicalAdminShowSchedule/> } />
+                    <Route path="/medical_admin_show_schedule_edit" element={ <MedicalAdminShowScheduleEdit/> } />
+                    <Route path="/medical_app_request" element={ <MedicalAppRequest/> } />
+                    <Route path="/medical_student_app" element={ <MedicalStudentApp/> } />
+                    <Route path="/medical_student_app_history" element={ <MedicalStudentAppHistory/> } />
+                    <Route path="/medical_student_home" element={ <MedicalStudentHome/> } />
+                    <Route path="/medical_student_show_schedule" element={ <MedicalStudentShowSchedule/> } />
                 </Routes>
                 
             
