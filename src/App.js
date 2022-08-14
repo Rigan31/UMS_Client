@@ -18,12 +18,26 @@ import AddStudentPage from './Services/Profile/pages/AddStudentPage'
 import OfferCourse from './Services/Course/pages/OfferCourse'
 import ShowOfferList from './Services/Course/pages/ShowOfferList'
 import SingleOfferCourse from './Services/Course/pages/SingleOfferCourse'
-import AddOutline from './Services/Course/pages/AddOutline'
+
+
+
+
+//  AMAR CODE
+import SmartCardList from './Services/Payment/pages/SmartCardList'
+import SingleCard from './Services/Payment/pages/SingleCard'
+import AddCard from './Services/Payment/pages/AddCard'
+import PaymentList from './Services/Payment/pages/PaymentList'
+import SinglePayment from './Services/Payment/pages/SinglePayment'
+import AddPayment from './Services/Payment/pages/AddPayment'
+import TransactionList from './Services/Payment/pages/TransactionList'
+import SingleTransaction from './Services/Payment/pages/SingleTransaction'
+import AddTransaction from './Services/Payment/pages/AddTransaction'
+
+
 
 
 export default function App() {
-
-
+    
     return (
         <BrowserRouter>
                 <Routes>
@@ -45,12 +59,24 @@ export default function App() {
                     <Route path="/head/offercourse" element={ <OfferCourse /> } />
                     <Route path="/head/showofferlist" element={<ShowOfferList /> } />
                     <Route path="/head/singleoffercourse/:offerCourseId" element={ <SingleOfferCourse/> } />
+
+
+
+                    {/* AMAR CODE */}
+                    <Route path="/smart_card_list" element={ <SmartCardList /> } />
+                    <Route path="/singlecard" element={ <SingleCard/> } />
+                    <Route path="/addcard" element={ <AddCard/> } />
                     
+                    {/* //  payment_list?type=all / single & student_id=1 */}
+                    <Route path="/payment_list" element={ <PaymentList /> } /> 
+                    <Route path="/singlepayment" element={ <SinglePayment/> } />
+                    <Route path="/addpayment" element={ <AddPayment/> } /> 
                     
-                    
-                    
-                    
-                    <Route path="/teacher/addoutline" element={ <AddOutline/> } />
+                    {/* //  transaction_list?type=all / single & student_id=1 */}
+                    <Route path="/transaction_list" element={ <TransactionList /> } /> 
+                    <Route path="/singletransaction" element={ <SingleTransaction/> } />
+                    <Route path="/addtransaction" element={ <AddTransaction/> } />  
+                       
 
                 </Routes>
                 

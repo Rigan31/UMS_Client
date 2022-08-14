@@ -21,8 +21,6 @@ const AddCourse = () => {
         const getCourse = async () =>{
           const courseFromServer = await fetchCourse()
           setBackendData(courseFromServer)
-
-          console.log("backend data: ", backendData)
         }
     
         getCourse();
@@ -31,7 +29,7 @@ const AddCourse = () => {
     const fetchCourse = async () =>{
       const res = await fetch(url);
       const data = await res.json()
-        
+    
       return data.data;
     }
 
@@ -52,21 +50,23 @@ const AddCourse = () => {
                         Department: CSE
                     </div>
                     <div className='detailsForm'>
-                        { backendData.map((course) => (
+                    
+
+                        {/* { backendData.map((course) => {
                                 <Card className='singleCourse'>
                                 <Card.Body >
                                     <Card.Title>{course.course_title}</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">{course.course_label}</Card.Subtitle>
                                     <Card.Text>
                                         <p>Credit hour: {course.credit}</p>
-                                        <p>Level: {course.level}</p>
+                                        <p>Level: {course.label}</p>
                                         <p>Term: {course.term}</p>
                                         <p>Type: {course.type}</p>
                                     </Card.Text>
-                                    <Card.Link href={`/head/singleoffercourse/${course.offer_course_id}`}>Go to course</Card.Link>
+                                    <Card.Link href={`singlecourse/${course.id}`}>Go to course</Card.Link>
                                 </Card.Body>
                                 </Card>
-                        ))}
+                        })} */}
                         
                     
 

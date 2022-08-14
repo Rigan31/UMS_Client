@@ -14,41 +14,14 @@ import Modal from 'react-bootstrap/Modal';
 const SingleOfferCourse= () => {
     const { offerCourseId } = useParams();
 
-    const url = "http://localhost:5002/head/singleoffercourse?offerCourseId=" + offerCourseId; 
+    const url = "http://localhost:5002/head/singleoffercourse?offercourseId=" + offerCourseId; 
     
 
     const [backendData, setBackendData] = useState([]);
     const [show, setShow] = useState(false);
-    const [teacher, setTeacher] = useState("")
-    const [teacherList, setTeacherList] = useState([{}])
 
     const handleClose = () => setShow(false);
-    
-    const handleSaveTeacher = () => {
-        setShow(false);
-
-        const url = "http://localhost:5002/head/singleoffercourse/saveteacher"
-
-        Axios.post(url, {
-            offerCourseId: offerCourseId,
-            teacher: teacher,
-        })
-        .then(res=>{
-
-        })
-
-
-    }
-    const handleShow = () => {
-        setShow(true);
-        const dept_name = 'CSE';
-        const url = "http://localhost:5002/head/getTeacherList?dept_name=" + dept_name;
-        Axios.get(url)
-        .then(res=>{
-            setTeacherList(res.data.data);
-        })
-    }
-
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         const getCourse = async () =>{
@@ -130,7 +103,7 @@ const SingleOfferCourse= () => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridState">
                                 <Form.Label>Department Name</Form.Label>
-                                <Form.Select id="deptName" onChange={(e)=> handle(e)} defaultValue={course.dept_name} disabled>
+                                <Form.Select id="deptName" onChange={(e)=> handle(e)} defaultValue={course.dept_name}>
                                     <option>Choose...</option>
                                     <option value="CSE">CSE</option>
                                     <option value="ME">ME</option>
@@ -142,7 +115,7 @@ const SingleOfferCourse= () => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label>Course Name</Form.Label>
-                            <Form.Control type="text" id="courseName" defaultValue={course.course_title} onChange={(e)=> handle(e)} disabled/>
+                            <Form.Control type="text" id="courseName" defaultValue={course.course_title} onChange={(e)=> handle(e)} />
                             </Form.Group>
 
                             
@@ -150,24 +123,24 @@ const SingleOfferCourse= () => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridPassword">
                             <Form.Label>Course ID</Form.Label>
-                            <Form.Control id="courseID" defaultValue={course.course_label}  onChange={(e)=> handle(e)} disabled/>
+                            <Form.Control id="courseID" defaultValue={course.course_label}  onChange={(e)=> handle(e)} />
                             </Form.Group>
                         </Row>
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label>Credit Hour</Form.Label>
-                                <Form.Control type="text" id="creditHour" defaultValue={course.credit} onChange={(e)=> handle(e)} disabled/>
+                                <Form.Control type="text" id="creditHour" defaultValue={course.credit} onChange={(e)=> handle(e)}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridAddress2">
                                 <Form.Label>Level</Form.Label>
-                                <Form.Control type="text" id="level" defaultValue={course.level}  onChange={(e)=> handle(e)} disabled/>
+                                <Form.Control type="text" id="level" defaultValue={course.level}  onChange={(e)=> handle(e)} />
                             </Form.Group>
                             
                             <Form.Group as={Col} controlId="formGridCity">
                                 <Form.Label>Term</Form.Label>
-                                <Form.Control type="text" id="term" defaultValue={course.term}  onChange={(e)=> handle(e)} disabled/>
+                                <Form.Control type="text" id="term" defaultValue={course.term}  onChange={(e)=> handle(e)} />
                             </Form.Group>
                         </Row>
 
@@ -175,7 +148,7 @@ const SingleOfferCourse= () => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>Type</Form.Label>
-                            <Form.Select id="type" onChange={(e)=> handle(e)} defaultValue={course.type} disabled>
+                            <Form.Select id="type" onChange={(e)=> handle(e)} defaultValue={course.type}>
                                 <option>Choose...</option>
                                 <option>Theory</option>
                                 <option>Sessional</option>
@@ -184,6 +157,9 @@ const SingleOfferCourse= () => {
 
                         </Row>
 
+                        <Button variant="primary" type="submit">
+                            Edit
+                        </Button>
                         </Form>
 
                             )
@@ -191,31 +167,31 @@ const SingleOfferCourse= () => {
                     </div>
 
                     <div className='AddType'>
-                    
-                    <Form.Group as={Col} controlId="formGridAddress1">
-                        <Form.Label>Teacher:   </Form.Label>
-                        <Form.Control type="text" id="teacher" defaultValue={teacher} disabled/>
-                    </Form.Group>
-                    
                     <Button variant="primary" onClick={handleShow}>
-                            Add Teacher
+                            Add type
                     </Button>
                     </div>
 
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
-                        <Modal.Title>Teacher Selection</Modal.Title>
+                        <Modal.Title>Modal heading</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                         <Form>
-                            <Form.Group className="formGroup" controlId="formGridState">
-                                <Form.Select className='selectLogin' id="loginas" onChange={e => setTeacher(e.target.value)}>
-                                    {teacherList.map((teacher)=>(
-                                        <option value={teacher.username}>{teacher.username}</option>
-                                    ))}    
-                                    
-                                
-                                </Form.Select>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control
+                                type="email"
+                                placeholder="name@example.com"
+                                autoFocus
+                            />
+                            </Form.Group>
+                            <Form.Group
+                            className="mb-3"
+                            controlId="exampleForm.ControlTextarea1"
+                            >
+                            <Form.Label>Example textarea</Form.Label>
+                            <Form.Control as="textarea" rows={3} />
                             </Form.Group>
                         </Form>
                         </Modal.Body>
@@ -223,8 +199,8 @@ const SingleOfferCourse= () => {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={handleSaveTeacher}>
-                            Save 
+                        <Button variant="primary" onClick={handleClose}>
+                            Save Changes
                         </Button>
                         </Modal.Footer>
                     </Modal>
