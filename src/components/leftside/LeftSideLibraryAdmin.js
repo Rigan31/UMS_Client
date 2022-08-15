@@ -8,62 +8,33 @@ const sidebarNavItems = [
     {
         display: 'Homepage',
         icon: <i className='bx bx-home'></i>,
-        to: '/',
-        section: ''
+        to: '/library_admin_home',
+        section: 'library_admin_home'
     },
     {
-        display: 'Profile',
+        display: 'Add Book',
         icon: <i class='bx bxs-user-circle'></i>,
-        to: '/profile',
-        section: 'profile'
+        to: '/add_book',
+        section: 'add_book'
     },
     {
-        display: 'Registration',
+        display: 'Grant Book',
         icon: <i class='bx bxs-registered' ></i>,
-        to: '/registration',
-        section: 'registration'
+        to: '/grant_book',
+        section: 'grant_book'
     },
+    ,
     {
-        display: 'View Grades',
-        icon: <i class='bx bx-book' ></i>,
-        to: '/grades',
-        section: 'View Grades'
-    },
-    {
-        display: 'Apply for Scholarship',
-        icon: <i class='bx bxs-graduation' ></i>,
-        to: '/scholarship',
-        section: 'Apply for Scholarship'
-    },
-    {
-        display: 'Dues Status',
-        icon: <i class='bx bx-wallet' ></i>,
-        to: '/dues',
-        section: 'Apply for Scholarship'
-    },
-    {
-        display: 'Feedback',
-        icon: <i class='bx bx-bookmark-alt' ></i>,
-        to: '/upload_feedback',
-        section: 'Feedback'
-    },
-    {
-        display: 'Library',
-        icon: <i class='bx bx-library' ></i>,
-        to: '/library_student_home',
-        section: 'Library'
-    },
-    {
-        display: 'My Advisor',
-        icon: <i class='bx bxs-user-voice' ></i>,
-        to: '/advisor',
-        section: 'Advisor'
-    },
-    {
-        display: 'Medical Center',
+        display: 'Show Books',
         icon: <i class='bx bx-color' ></i>,
-        to: '/medical_student_home',
-        section: 'Medical Center'
+        to: '/admin_show_books',
+        section: 'Show Books'
+    },
+    {
+        display: 'Show Borrow Info',
+        icon: <i class='bx bx-color' ></i>,
+        to: '/admin_show_borrow_info',
+        section: 'Show Borrow Info'
     },
     {
         display: 'Logout',

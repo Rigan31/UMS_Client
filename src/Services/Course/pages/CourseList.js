@@ -57,7 +57,7 @@ const AddCourse = () => {
                                     <Card.Subtitle className="mb-2 text-muted">{course.course_label}</Card.Subtitle>
                                     <Card.Text>
                                         <p>Credit hour: {course.credit}</p>
-                                        <p>Level: {course.label}</p>
+                                        <p>Level: {course.level}</p>
                                         <p>Term: {course.term}</p>
                                         <p>Type: {course.type}</p>
                                     </Card.Text>

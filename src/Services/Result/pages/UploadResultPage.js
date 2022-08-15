@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios'
 import Sidebar from '../../../components/layout/Sidebar';
+import Button from 'react-bootstrap/esm/Button';
 
 
 export default function UploadResultPage() {
-    const [sessionsDepts, setSessionsDepts] = useState([])
+    const [sessionsDepts, setSessionsDepts] = useState([{
+
+    }])
     const [courses, setCourses] = useState([])
     useEffect(() => {
         console.log("use effect e dhuksi")
-        fetch("/get_sessions_depts").then(
+        fetch("http://localhost:5004/get_sessions_depts").then(
         response => response.json()
         ).then(
         data => {
@@ -18,12 +21,13 @@ export default function UploadResultPage() {
             setSessionsDepts(data);
         }
         )
-    }, [])
+    }, [])  
+    let session = 0;
 
     const get_courses= () => {
-        const session = document.getElementById("session").value;
+        session = document.getElementById("session").value;
         const dept = document.getElementById("dept").value;
-        let str = "/get_courses?session_id=" + session + "&dept_id=" + dept; 
+        let str = "http://localhost:5004/get_courses?session_id=" + session + "&dept_id=" + dept; 
         fetch(str).then(
             response => response.json()
             ).then(
@@ -42,6 +46,7 @@ export default function UploadResultPage() {
         const [file, setFile] = useState();
         const [array, setArray] = useState([]);
         const [course, setCourse] = useState([]);
+        
       
         const fileReader = new FileReader();
       
@@ -63,6 +68,7 @@ export default function UploadResultPage() {
           });
       
           setArray(array);
+          console.log("array :     ")
           console.log(array);
         };
       
@@ -85,10 +91,12 @@ export default function UploadResultPage() {
         const routeChangeToUploadResult= () =>{ 
             navigate('/show_result');
         }
-        const send_csv_file = () => {
-            Axios.post("http://localhost:5000/result_file", {
+        const send_csv_file = (e) => {
+            e.preventDefault();
+            Axios.post("http://localhost:5004/result_file", {
                 data: array,
                 course: course,
+                session: sessionsDepts.sessions[0].id,
             }).then((response) => {
                 alert("Result Uploaded!");
                 routeChangeToUploadResult();
@@ -192,7 +200,7 @@ export default function UploadResultPage() {
 
 
                 <br/> <br/>
-                <a class="btn btn-primary btn-lg" href="#" role="button" onClick={ send_csv_file }>Upload Result</a>
+                <Button onClick={(e) => send_csv_file(e) }>Upload Result</Button>
             </div>
         </div>
     )

@@ -157,9 +157,9 @@ const SingleCourse= () => {
 
                         </Row>
 
-                        <Button variant="primary" type="submit">
+                        {/* <Button variant="primary" type="submit">
                             Edit
-                        </Button>
+                        </Button> */}
                         </Form>
 
                             )
@@ -167,9 +167,9 @@ const SingleCourse= () => {
                     </div>
 
                     <div className='AddType'>
-                    <Button variant="primary" onClick={handleShow}>
+                    {/* <Button variant="primary" onClick={handleShow}>
                             Add type
-                    </Button>
+                    </Button> */}
                     </div>
 
                     <Modal show={show} onHide={handleClose}>

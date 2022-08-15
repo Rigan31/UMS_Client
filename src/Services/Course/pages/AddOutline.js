@@ -125,6 +125,14 @@ const AddOutline = () => {
     
     }
 
+    function publishOutline(){
+        const url = 'http://localhost:5002/teacher/publishOutline?offered_course_id=' + selectedOfferCourse;
+        Axios.get(url)
+        .then(res=>{
+            console.log(res.data)
+        })
+    }
+
     function handle(e){
         const newData = {...data}
         newData[e.target.id] = e.target.value
@@ -187,6 +195,7 @@ const AddOutline = () => {
 
                     <div className='AddButton'>
                         <Button onClick={handleShow}>Add New Type</Button>
+                        <Button onClick={publishOutline}>Publish</Button>
                     </div>
 
                     <Modal show={show} onHide={handleClose}>
