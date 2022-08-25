@@ -1,37 +1,57 @@
 .sidebar {
-    height: 100%;
-    width: 160px;
     position: fixed;
+    height: 100vh;
+    width: 300px;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff;
     overflow-x: hidden;
     padding-top: 16px;
   }
+
+.sidebar__logo {
+    display: grid;
+    place-items: center;
+    height: 120px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Mochiy Pop P one', sans-serif;
+}
+
   
-  /* Style sidebar links */
-  .sidebar a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
+  .title{
+    color: #0069d9;
+    font-weight: 900;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 40px;
+    margin-top: 25px;
   }
-  
-  /* Style links on mouse-over */
-  .sidebar a:hover {
-    color: #f1f1f1;
+
+  hr{
+    border-top: 2px solid;
+    width: 80%;
+    position: relative;
+    /* make it in middle horizontally */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
   }
-  
-  /* Style the main content */
-  .main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    padding: 0px 10px;
-  }
-  
-  /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
-  @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-  }
+
+.navigationUpper{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.navigationLower{
+  margin-top: 20px;
+}
+
+.navigationBottom{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  margin-bottom: 30px;
+}

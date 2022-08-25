@@ -1,19 +1,59 @@
 import React from 'react'
-import LeftSideAdmin from '../leftside/LeftsideAdmin'
+import {Navigation} from 'react-minimal-side-navigation';
+import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
+import Icon from "awesome-react-icons";
+import { useNavigate, useLocation } from "react-router-dom";
+import {CgHomeAlt} from "react-icons/cg";
+import {CgProfile} from "react-icons/cg";
+import {CgFileDocument} from "react-icons/cg";
+import {CgList} from "react-icons/cg";
+// import {CgProfile} from "react-icons/cg";
+// import {CgProfile} from "react-icons/cg";
+// import {CgProfile} from "react-icons/cg";
+// import {CgProfile} from "react-icons/cg";
+// import {CgProfile} from "react-icons/cg";
 
-const SidebarAdmin = () => { 
+
+const Sidebar = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
   return (
-    <div style={myStyle}>
-        <LeftSideAdmin />
-    </div>
+    <Navigation
+          activeItemId={location.pathname}
+          onSelect={({ itemId }) => {
+            // go to that location
+            navigate(itemId);
+          }}
+          items={[
+            {
+              title: "HomePage",
+              itemId: "/",
+              // Optional
+              elemBefore: () => <CgHomeAlt />,
+              
+            },
+            {
+              title: "Profile",
+              itemId: "/profile",
+              elemBefore: () => <CgProfile />,
+            },
+            {
+              title: "Add Student",
+              itemId: "/add_student",
+              elemBefore: () => <CgFileDocument/>,
+              
+            },
+            {
+                title: "Logout",
+                itemId: "/logout",
+                // Optional
+                elemBefore: () => <CgHomeAlt />,
+                
+            },
+
+          ]}
+        />
   )
 }
 
-const myStyle = {
-  float: 'left',
-  width: '30%',
-  height: '100%',
-  borderRight: '5px solid black' 
-}
-
-export default SidebarAdmin
+export default Sidebar

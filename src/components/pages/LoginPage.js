@@ -2,14 +2,13 @@ import React, {useEffect, useState} from 'react'
 import { Link, resolvePath } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios'
-import '../assets/css/Login.css'
+import '../../assets/css/Login.css'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import loginImg from '../assets/images/login.webp'
+import loginImg from '../../assets/images/login.webp'
 
 
-export default function LoginPage() {
-    const [who, setWho] = useState("");
+export default function LoginPage( ) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginState, setLoginState] = useState("");
@@ -20,10 +19,6 @@ export default function LoginPage() {
     const routeChangeToProfile = () =>{ 
       navigate('/profile');
     }
-
-    useEffect(() => {
-        document.title = "Login"
-      }, [])
 
     useEffect(()=>{
         Axios.get("http://localhost:5000/login").then((response)=>{
@@ -41,15 +36,11 @@ export default function LoginPage() {
     const login= (e) => {
         e.preventDefault();
         console.log("sending to server");
-        console.log("who: ", who);
         console.log("username: ", username);
         console.log("password: ", password);
-
-        
         Axios.post("http://localhost:5000/login", {
-            who: who,
             username: username, 
-            password: password
+            password: password 
         }).then((response) => {
             console.log(response);
             console.log(response.data.result);
@@ -75,7 +66,7 @@ export default function LoginPage() {
                     
                 <Form onSubmit={(e)=> login(e)}>
                     <Form.Group className="formGroup" controlId="formGridState">
-                        <Form.Select className='selectLogin' id="loginas" onChange={e => setWho(e.target.value)}>
+                        <Form.Select className='selectLogin' id="loginas" >
                             <option value="Student">Login As Student</option>
                             <option value="Teacher">Login As Teacher</option>
                             <option value="Admin">Login As Admin</option>
