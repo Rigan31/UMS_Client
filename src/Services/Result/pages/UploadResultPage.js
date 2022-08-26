@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios'
-import Sidebar from '../../../components/layout/Sidebar';
+import SideBarTeacher from '../../../components/layout/SideBarTeacher';
 import Button from 'react-bootstrap/esm/Button';
 
 
@@ -106,7 +106,7 @@ export default function UploadResultPage() {
 
     return (    
         <div className="container rounded bg-white mt-5 mb-5">
-            <Sidebar />
+            <SideBarTeacher />
             <div class="jumbotron">
                 <h1 class="display-4" align="center">Upload Result</h1>
                 <p class="lead">Session : <select id="session" name="level" class="btn btn-secondary dropdown-toggle">

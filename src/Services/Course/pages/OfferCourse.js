@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import '../assets/css/OfferCourse.css'
-import Sidebar from '../../../components/layout/Sidebar.js'
+import Sidebar from '../../../components/layout/SideBarHead'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import SidebarHead from '../../../components/layout/SideBarHead';
 
 const OfferCourse = () => {
 
@@ -117,7 +118,7 @@ const OfferCourse = () => {
 
     return (
         <div>
-        <Sidebar />
+        <SidebarHead />
         <div className='offerRightSide'>
                 <div className='pageTitle'>
                     Offer Course

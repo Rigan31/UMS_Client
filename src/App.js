@@ -56,6 +56,10 @@ import MedicalStudentAppHistory from './Services/Medical/pages/student/MedicalSt
 import MedicalStudentHome from './Services/Medical/pages/student/MedicalStudentHome'
 import MedicalStudentShowSchedule from './Services/Medical/pages/student/MedicalStudentShowSchedule'
 
+import DashBoard from './Services/Profile/pages/DashBoard'
+import CourseRegAdvisor from './Services/Course/pages/CourseRegAdvisor'
+import SeeStudentProfile from './Services/Profile/pages/SeeStudentProfile'
+
 
 
 
@@ -67,8 +71,8 @@ export default function App() {
                 <Routes>
                     <Route exact path="/" element={ <LoginPage/> } />
                     <Route path="/login" element={ <LoginPage/> } />
-                    <Route path="/addcourse" element={<AddCourse />} />
-                    <Route path="/courselist" element={<CourseList />} />
+                    <Route path="/head/addcourse" element={<AddCourse />} />
+                    <Route path="/head/courselist" element={<CourseList />} />
                     <Route path="/logout" element={ <LoginPage/> } />
                     <Route path="/reg" element={ <RegPage/> } />
                     <Route path="/singlecourse/:courseId" element={ <SingleCourse/> } />
@@ -76,8 +80,8 @@ export default function App() {
                     
                     <Route path="/view_grades" element={ <ViewGradesPage/> } />
                     <Route path="/admin_profile" element={ <AdminProfilePage/> } />
-                    <Route path="/add_student" element={ <AddStudentPage/> } />
-                    <Route path="/upload_result" element={ <UploadResultPage/> } />
+                    
+                    <Route path="/teacher/upload_result" element={ <UploadResultPage/> } />
                     <Route path="/show_result" element={ <ShowResultPage/> } />
                     <Route path="/student_register" element={ <StudentRegister/> } />
                     <Route path="/head/offercourse" element={ <OfferCourse /> } />
@@ -103,7 +107,7 @@ export default function App() {
                     <Route path="/student_show_borrow_info" element={ <StudentShowBorrowInfo/> } />
 
                     <Route path="/upload_feedback" element={ <UploadFeedback/> } />
-                    <Route path="/show_feedbacks" element={ <ShowFeedbacks/> } />
+                    <Route path="/head/show_feedbacks" element={ <ShowFeedbacks/> } />
 
 
                     {/* AMAR CODE */}
@@ -135,6 +139,14 @@ export default function App() {
                     <Route path="/medical_student_show_schedule" element={ <MedicalStudentShowSchedule/> } />
 
 
+                    <Route path="/dashboard" element={ <DashBoard/> } />
+
+                    {/* Advisor part */}
+                    <Route path="/advisor/course_registration" element={ <CourseRegAdvisor/> } />
+                    <Route path="/advisor/see_student_profile" element={ <SeeStudentProfile/> } />
+
+                    {/* Admin part */}
+                    <Route path="/admin/add_student" element={ <AddStudentPage/> } />
                     
                 </Routes>
                 

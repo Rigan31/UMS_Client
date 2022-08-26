@@ -20,7 +20,7 @@ export default function AddStudentPage() {
 
         console.log("sending to server");
         console.log("password: ", password);
-        Axios.post("http://localhost:5000/add_student", {
+        Axios.post("http://localhost:5000/admin/add_student", {
             id: id, 
             name: name,
             password: password,

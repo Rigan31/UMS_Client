@@ -13,12 +13,42 @@ export default function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginState, setLoginState] = useState("");
+    const [usernameTopass, setUsernameTopass] = useState("");
+    //const [userId, setUserId] = useState("");
 
 
     Axios.defaults.withCredentials  = true;
     let navigate = useNavigate(); 
-    const routeChangeToProfile = () =>{ 
-      navigate('/profile');
+    const routeChangeToProfile = (id) =>{ 
+        console.log("who who who who -------", who); 
+      if(who === "student"){
+        localStorage.setItem('username',  id);
+        localStorage.setItem('who', who);
+        navigate('/dashboard');
+      }
+      else if(who  === "head"){
+        localStorage.setItem('username',  id);
+        localStorage.setItem('who', who);
+        navigate('/head/addcourse');
+      }
+      else if(who === "teacher"){
+        localStorage.setItem('username',  id);
+        localStorage.setItem('who', who);
+        navigate('/teacher/addoutline');
+      }
+      else if(who === "advisor"){
+        localStorage.setItem('username',  id);
+        localStorage.setItem('who', who);
+        navigate('/advisor/course_registration');
+      }
+      else if(who === "admin"){
+        localStorage.setItem('username',  id);
+        localStorage.setItem('who', who);
+        navigate('/admin/add_student');
+      }
+      // sent user id to profile page
+
+
     }
 
     useEffect(() => {
@@ -40,24 +70,31 @@ export default function LoginPage() {
 
     const login= (e) => {
         e.preventDefault();
+        //const who_who = document.getElementById("loginas").value;
+        //setWho(who_who);
         console.log("sending to server");
         console.log("who: ", who);
         console.log("username: ", username);
         console.log("password: ", password);
-
         
         Axios.post("http://localhost:5000/login", {
             who: who,
             username: username, 
-            password: password
+            password: password,
         }).then((response) => {
             console.log(response);
             console.log(response.data.result);
-            if(response.data.result === "approved"){
-                routeChangeToProfile();
+            if(response.data.msg === "approved"){
+                const id = response.data.id;
+                routeChangeToProfile(id);
+            }
+            else if(response.data.msg === "invalid_username"){
+                setLoginState("Invalid username/password");
+                alert("Invalid username");
             }
             else{
-                setLoginState("Invalid username/password")
+                setLoginState("Invalid username/password");
+                alert("Invalid password");
             }
 
         });
@@ -75,12 +112,15 @@ export default function LoginPage() {
                     
                 <Form onSubmit={(e)=> login(e)}>
                     <Form.Group className="formGroup" controlId="formGridState">
-                        <Form.Select className='selectLogin' id="loginas" onChange={e => setWho(e.target.value)}>
-                            <option value="Student">Login As Student</option>
-                            <option value="Teacher">Login As Teacher</option>
-                            <option value="Admin">Login As Admin</option>
-                            <option value="Advisor">Login As Advisor</option>
-                            <option value="Head">Login As Head</option>
+                        <Form.Select className='selectLogin' id="loginas" onChange={(e)=> setWho(e.target.value)} >
+                            <option value="student">Login As Student</option>
+                            <option value="teacher">Login As Teacher</option>
+                            <option value="admin">Login As Admin</option>
+                            <option value="advisor">Login As Advisor</option>
+                            <option value="head">Login As Head</option>
+                            <option value="financial">Login As Financial Admoin</option>
+                            <option value="librarian">Login As Librarian</option>
+                            <option value="medical">Login As Medical Staff</option>
                         </Form.Select>
                     </Form.Group>
                                 

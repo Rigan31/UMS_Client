@@ -13,10 +13,9 @@ import {TbSchool} from "react-icons/tb";
 import {MdOutlineFeedback} from "react-icons/md";
 import {MdOutlineMedicalServices} from "react-icons/md";
 import {IoLibraryOutline} from "react-icons/io5";
-import SidebarLibraryAdmin from './SidebarLibraryAdmin';
 
 
-const SidebarAdmin= () => { 
+const SideBarAdvisor= () => { 
   const navigate = useNavigate();
     const location = useLocation();
   return (
@@ -25,7 +24,7 @@ const SidebarAdmin= () => {
       <div className='title'>
         <h1>UMS</h1>
         <div className='whoosePortal'>
-          <h4>Admin</h4>
+          <h4>Head</h4>
         </div>
       
       </div>
@@ -39,18 +38,18 @@ const SidebarAdmin= () => {
             }}
             items={[
               {
-                title: "Add Student",
-                itemId: "/admin/add_student",
+                title: "Course Registration",
+                itemId: "/advisor/course_registration",
                 elemBefore: () => <CgHomeAlt />,
                 
               },
-              // {
-              //   title: "Upload Result",
-              //   itemId: "/teacher/upload_result",
-              //   activeColor: '#0069d9',
-              //   elemBefore: () => <CgProfile/>,
+              {
+                title: "See Student Profile",
+                itemId: "/advisor/see_student_profile",
+                activeColor: '#0069d9',
+                elemBefore: () => <CgProfile/>,
                 
-              // },
+              },
               
             ]}
             />
@@ -81,4 +80,4 @@ const SidebarAdmin= () => {
 
 
 
-export default SidebarAdmin;
+export default SideBarAdvisor

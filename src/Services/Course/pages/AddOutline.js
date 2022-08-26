@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/css/AddOutline.css'
-import Sidebar from '../../../components/layout/Sidebar.js'
+import Sidebar from '../../../components/layout/SideBarTeacher.js'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Button from 'react-bootstrap/Button';
@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
+import SideBarTeacher from '../../../components/layout/SideBarTeacher.js';
 
 const AddOutline = () => {
 
@@ -146,7 +147,7 @@ const AddOutline = () => {
 
     return (
         <div>
-        <Sidebar />
+        <SideBarTeacher />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     Add outline

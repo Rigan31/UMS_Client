@@ -7,7 +7,12 @@ import '../../assets/css/Course.css'
 import Sidebar from '../layout/Sidebar';
 
 
+// get the id which is passed from login page
+
 export default function LoginPage() {
+    // get the user id which is sent from the login Page
+
+    
     const [backendData, setBackendData] = useState("")
 
     const [name, setName] = useState("");
@@ -33,7 +38,9 @@ export default function LoginPage() {
     
     let navigate = useNavigate(); 
     const routeChangeToProfile = () =>{ 
-        navigate('/profile');
+        // sent user id to profile page
+        
+        //navigate('/profile');
       }
     const edit_profile= () => {
         const phone = document.getElementById("phone").value;

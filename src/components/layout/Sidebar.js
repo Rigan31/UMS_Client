@@ -23,6 +23,10 @@ const Sidebar = () => {
       {/* div with className title */}
       <div className='title'>
         <h1>UMS</h1>
+        <div className='whoosePortal'>
+          <h4>Student</h4>
+        </div>
+        
       
       </div>
       <hr />
@@ -36,7 +40,7 @@ const Sidebar = () => {
             items={[
               {
                 title: "HomePage",
-                itemId: "/",
+                itemId: "/dashboard",
                 elemBefore: () => <CgHomeAlt />,
                 
               },

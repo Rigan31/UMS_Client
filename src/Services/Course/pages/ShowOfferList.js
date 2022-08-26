@@ -1,6 +1,6 @@
 import React, { useEffect,  useState } from 'react'
 import '../assets/css/CourseList.css'
-import Sidebar from '../../../components/layout/Sidebar.js'
+import SideBarHead from '../../../components/layout/SideBarHead.js'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Card from 'react-bootstrap/Card';
@@ -41,7 +41,7 @@ const AddCourse = () => {
 
     return (
         <div>
-        <Sidebar />
+        <SideBarHead />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     Offer CourseList

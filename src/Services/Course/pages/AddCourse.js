@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import '../assets/css/AddCourse.css'
-import Sidebar from '../../../components/layout/Sidebar.js'
+import Sidebar from '../../../components/layout/SideBarHead'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import SidebarHead from '../../../components/layout/SideBarHead';
+
 
 const AddCourse = () => {
 
-    const url = "http://localhost:5002/addcourse"
+    const url = "http://localhost:5002/head/addcourse"
 
     let navigate = useNavigate(); 
     const routeChangeToProfile = (course_id) =>{ 
@@ -59,7 +61,7 @@ const AddCourse = () => {
 
     return (
         <div>
-        <Sidebar />
+        <SidebarHead />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     Add New Course

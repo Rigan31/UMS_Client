@@ -1,9 +1,10 @@
 import React, { useEffect,  useState } from 'react'
 import '../assets/css/CourseList.css'
-import Sidebar from '../../../components/layout/Sidebar.js'
+import Sidebar from '../../../components/layout/SideBarHead'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import SidebarHead from '../../../components/layout/SideBarHead';
 
 
 const AddCourse = () => {
@@ -36,7 +37,7 @@ const AddCourse = () => {
 
     return (
         <div>
-        <Sidebar />
+        <SidebarHead />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     CourseList
