@@ -21,32 +21,32 @@ export default function LoginPage() {
     let navigate = useNavigate(); 
     const routeChangeToProfile = (id) =>{ 
         console.log("who who who who -------", who); 
-      if(who === "student"){
         localStorage.setItem('username',  id);
         localStorage.setItem('who', who);
+      if(who === "student"){
         navigate('/dashboard');
       }
       else if(who  === "head"){
-        localStorage.setItem('username',  id);
-        localStorage.setItem('who', who);
         navigate('/head/addcourse');
       }
       else if(who === "teacher"){
-        localStorage.setItem('username',  id);
-        localStorage.setItem('who', who);
         navigate('/teacher/addoutline');
       }
       else if(who === "advisor"){
-        localStorage.setItem('username',  id);
-        localStorage.setItem('who', who);
         navigate('/advisor/course_registration');
       }
       else if(who === "admin"){
-        localStorage.setItem('username',  id);
-        localStorage.setItem('who', who);
         navigate('/admin/add_student');
       }
-      // sent user id to profile page
+      else if(who === "librarian"){
+        navigate('/library_admin_home');
+      }
+      else if(who === "financial"){
+
+      }
+      else if(who === "medical"){
+        navigate('/medical_admin_home');
+      }
 
 
     }
@@ -118,7 +118,7 @@ export default function LoginPage() {
                             <option value="admin">Login As Admin</option>
                             <option value="advisor">Login As Advisor</option>
                             <option value="head">Login As Head</option>
-                            <option value="financial">Login As Financial Admoin</option>
+                            <option value="financial">Login As Financial Admin</option>
                             <option value="librarian">Login As Librarian</option>
                             <option value="medical">Login As Medical Staff</option>
                         </Form.Select>

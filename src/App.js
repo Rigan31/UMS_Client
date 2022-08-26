@@ -71,43 +71,34 @@ export default function App() {
                 <Routes>
                     <Route exact path="/" element={ <LoginPage/> } />
                     <Route path="/login" element={ <LoginPage/> } />
-                    <Route path="/head/addcourse" element={<AddCourse />} />
-                    <Route path="/head/courselist" element={<CourseList />} />
+                    
                     <Route path="/logout" element={ <LoginPage/> } />
                     <Route path="/reg" element={ <RegPage/> } />
-                    <Route path="/singlecourse/:courseId" element={ <SingleCourse/> } />
+                    
                     <Route path="/profile" element={ <ProfilePage/> } />
                     
                     <Route path="/view_grades" element={ <ViewGradesPage/> } />
                     <Route path="/admin_profile" element={ <AdminProfilePage/> } />
                     
-                    <Route path="/teacher/upload_result" element={ <UploadResultPage/> } />
+                    
                     <Route path="/show_result" element={ <ShowResultPage/> } />
                     <Route path="/student_register" element={ <StudentRegister/> } />
-                    <Route path="/head/offercourse" element={ <OfferCourse /> } />
-                    <Route path="/head/showofferlist" element={<ShowOfferList /> } />
-                    <Route path="/head/singleoffercourse/:offerCourseId" element={ <SingleOfferCourse/> } />
                     
                     
                     
                     
                     
-                    <Route path="/teacher/addoutline" element={ <AddOutline/> } />
+                    
+                    
 
-                    <Route path="/library_admin_home" element={ <LibraryAdminHome/> } />
-                    <Route path="/add_book" element={ <AddBook/> } />
-                    <Route path="/grant_book" element={ <GrantBook/> } />
-                    <Route path="/admin_show_books" element={ <AdminShowBooks/> } />
-                    <Route path="/admin_show_books_edit" element={ <AdminShowBooksEdit/> } />
-                    <Route path="/admin_show_borrow_info" element={ <AdminShowBorrowInfo/> } />
-                    <Route path="/admin_show_borrow_info_edit" element={ <AdminShowBorrowInfoEdit/> } />
+                    
 
                     <Route path="/library_student_home" element={ <LibraryStudentHome/> } />
                     <Route path="/student_show_books" element={ <StudentShowBooks/> } />
                     <Route path="/student_show_borrow_info" element={ <StudentShowBorrowInfo/> } />
 
                     <Route path="/upload_feedback" element={ <UploadFeedback/> } />
-                    <Route path="/head/show_feedbacks" element={ <ShowFeedbacks/> } />
+                    
 
 
                     {/* AMAR CODE */}
@@ -128,6 +119,49 @@ export default function App() {
 
 
                     {/* piyal code  */}
+                    
+
+
+                    <Route path="/dashboard" element={ <DashBoard/> } />
+
+
+
+
+                    {/* Teacher part */}
+                    <Route path="/teacher/upload_result" element={ <UploadResultPage/> } />
+                    <Route path="/teacher/addoutline" element={ <AddOutline/> } />
+
+                    {/* Head part */}
+
+                    <Route path="/head/offercourse" element={ <OfferCourse /> } />
+                    <Route path="/head/showofferlist" element={<ShowOfferList /> } />
+                    <Route path="/head/singleoffercourse/:offerCourseId" element={ <SingleOfferCourse/> } />
+                    <Route path="/head/show_feedbacks" element={ <ShowFeedbacks/> } />
+                    <Route path="/head/addcourse" element={<AddCourse />} />
+                    <Route path="/head/courselist" element={<CourseList />} />
+                    <Route path="/singlecourse/:courseId" element={ <SingleCourse/> } />
+
+
+
+                    {/* Advisor part */}
+                    <Route path="/advisor/course_registration" element={ <CourseRegAdvisor/> } />
+                    <Route path="/advisor/see_student_profile" element={ <SeeStudentProfile/> } />
+
+                    {/* Admin part */}
+                    <Route path="/admin/add_student" element={ <AddStudentPage/> } />
+
+                    {/* Librarian */}
+                    
+                    <Route path="/library_admin_home" element={ <LibraryAdminHome/> } />
+                    <Route path="/add_book" element={ <AddBook/> } />
+                    <Route path="/grant_book" element={ <GrantBook/> } />
+                    <Route path="/admin_show_books" element={ <AdminShowBooks/> } />
+                    <Route path="/admin_show_books_edit" element={ <AdminShowBooksEdit/> } />
+                    <Route path="/admin_show_borrow_info" element={ <AdminShowBorrowInfo/> } />
+                    <Route path="/admin_show_borrow_info_edit" element={ <AdminShowBorrowInfoEdit/> } />
+
+
+                    {/* Medical staff */}
                     <Route path="/medical_add_doctor" element={ <MedicalAddDoctor/> } />
                     <Route path="/medical_admin_home" element={ <MedicalAdminHome/> } />
                     <Route path="/medical_admin_show_schedule" element={ <MedicalAdminShowSchedule/> } />
@@ -139,14 +173,7 @@ export default function App() {
                     <Route path="/medical_student_show_schedule" element={ <MedicalStudentShowSchedule/> } />
 
 
-                    <Route path="/dashboard" element={ <DashBoard/> } />
-
-                    {/* Advisor part */}
-                    <Route path="/advisor/course_registration" element={ <CourseRegAdvisor/> } />
-                    <Route path="/advisor/see_student_profile" element={ <SeeStudentProfile/> } />
-
-                    {/* Admin part */}
-                    <Route path="/admin/add_student" element={ <AddStudentPage/> } />
+                    {/* Financial admin */}
                     
                 </Routes>
                 

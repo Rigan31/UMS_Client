@@ -6,8 +6,11 @@ import '../../assets/css/AdminHome.css';
 import SidebarMedicalAdmin from '../../../../components/layout/SidebarMedicalAdmin';
 export default function MedicalAdminHome() {
 
-    return (    
-        <div className="def">
+    return (
+        <div>
+            <SidebarMedicalAdmin />
+            <div className="rightSide">
+            <div className="def">
             
             <div class="jumbotron">
                 <h3 align="center">Medical Admin Homepage</h3><br/>
@@ -25,5 +28,9 @@ export default function MedicalAdminHome() {
             </div>
             </div>
         </div>
+            </div>
+        </div>   
+
+        
     )
 }
