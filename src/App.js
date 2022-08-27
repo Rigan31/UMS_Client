@@ -33,6 +33,16 @@ import TransactionList from './Services/Payment/pages/TransactionList'
 import SingleTransaction from './Services/Payment/pages/SingleTransaction'
 import AddTransaction from './Services/Payment/pages/AddTransaction'
 
+import ScholarshipList from './Services/Scholarship/pages/ScholarshipList'
+import SingleScholarship from './Services/Scholarship/pages/SingleScholarship'
+import AddScholarship from './Services/Scholarship/pages/AddScholarship'
+import ApplyScholarship from './Services/Scholarship/pages/ApplyScholarship'
+import SingleAppliedScholarship from './Services/Scholarship/pages/SingleAppliedScholarship'
+import StateList from './Services/Scholarship/pages/StateList'
+import UpdateState from './Services/Scholarship/pages/UpdateState'
+import AppliedScholarshipList from './Services/Scholarship/pages/AppliedScholarshipList'
+import PendingList from './Services/Scholarship/pages/PendingList'
+
 
 
 
@@ -77,6 +87,20 @@ export default function App() {
                     <Route path="/singletransaction" element={ <SingleTransaction/> } />
                     <Route path="/addtransaction" element={ <AddTransaction/> } />  
                        
+
+                    {/* AMAR CODE 2 */}
+                    <Route path="/scholarship_list" element={ <ScholarshipList /> } />
+                    <Route path="/single_scholarship" element={ <SingleScholarship/> } />
+                    <Route path="/add_scholarship" element={ <AddScholarship/> } />
+
+                    <Route path="/applied_scholarship_list" element={ <AppliedScholarshipList /> } />
+                    <Route path="/pending_scholarship_list" element={ <PendingList /> } /> 
+                    <Route path="/apply_scholarship" element={ <ApplyScholarship /> } /> 
+                    <Route path="/single_apply_scholarship" element={ <SingleAppliedScholarship /> } /> 
+
+                    <Route path="/scholarship_state_list" element={ <StateList /> } />
+                    <Route path="/update_scholarship_state" element={ <UpdateState/> } />
+
 
                 </Routes>
                 

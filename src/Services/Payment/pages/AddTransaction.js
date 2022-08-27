@@ -90,7 +90,7 @@ const AddTransaction = () => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label>Card No</Form.Label>
-                                <Form.Control type="text" id="card_no" defaultValue={data.card_no} onChange={(e)=> handle(e)}/>
+                                <Form.Control type="text" id="card_no" defaultValue="Insert card no" onChange={(e)=> handle(e)}/>
                             </Form.Group>
                         </Row>
 
@@ -111,7 +111,7 @@ const AddTransaction = () => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label>Trx Id</Form.Label>
-                                <Form.Control type="text" id="trx_id" defaultValue={data.trx_id} onChange={(e)=> handle(e)}/>
+                                <Form.Control type="text" id="trx_id" defaultValue="Insert transaction id" onChange={(e)=> handle(e)}/>
                             </Form.Group>
                         </Row>
 
@@ -125,6 +125,11 @@ const AddTransaction = () => {
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
+                        <span>&nbsp; &nbsp;</span>
+                        <Button variant="warning">
+                             <a href={`singlepayment?student_id=${data.student_id}&id=${data.type_id}`} 
+                                style={{color:'white'}}>Go Back</a>
+                            </Button>
                             </Form>
                     
                     
