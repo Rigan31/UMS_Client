@@ -63,5 +63,6 @@ export default function AdminShowBooks() {
                 </table>
         </div>
         </div>
+        </div>
     )
 }

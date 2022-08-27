@@ -39,13 +39,13 @@ export default function LoginPage() {
         navigate('/admin/add_student');
       }
       else if(who === "librarian"){
-        navigate('/library_admin_home');
+        navigate('/library/admin_home');
       }
       else if(who === "financial"){
         navigate('/financial_admin/dashboard');
       }
       else if(who === "medical"){
-        navigate('/medical_admin_home');
+        navigate('/medical/admin_home');
       }
 
 

@@ -40,26 +40,26 @@ const SidebarMedicalAdmin = () => {
             items={[
               {
                 title: "HomePage",
-                itemId: "/medical_admin_home",
+                itemId: "/medical/admin_home",
                 elemBefore: () => <CgHomeAlt />,
                 
               },
               {
                 title: "Add Doctor",
-                itemId: "/medical_add_doctor",
+                itemId: "/medical/add_doctor",
                 activeColor: '#0069d9',
                 elemBefore: () => <CgProfile/>,
                 
               },
               {
                 title: "Schedule",
-                itemId: "/medical_admin_show_schedule",
+                itemId: "/medical/admin_show_schedule",
                 elemBefore: () => <MdAppRegistration/>,
                 
               },
               {
                   title: "Appointment Requests",
-                  itemId: "/medical_app_request",
+                  itemId: "/medical/app_request",
                   // Optional
                   elemBefore: () => <CgList />,
                   
