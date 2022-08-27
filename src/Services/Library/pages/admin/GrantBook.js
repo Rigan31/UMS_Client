@@ -22,7 +22,7 @@ export default function GrantBook() {
 
     let navigate = useNavigate(); 
     const routeChangeToGrantBook= () =>{ 
-        navigate('/grant_book');
+        navigate('/library/grant_book');
     }
     const grant_book = (e) => {
         e.preventDefault();
@@ -34,7 +34,12 @@ export default function GrantBook() {
             date: date,
         }).then((response) => {
             console.log(response)
-            alert("Book Granted!");
+            if(response.data == "Limit reached")
+                alert("Limit Reached!");
+            else if(response.data == "No book available")
+                alert("No book  available!"); 
+            else
+                alert("Book Granted!");
             routeChangeToGrantBook();
         });
     }

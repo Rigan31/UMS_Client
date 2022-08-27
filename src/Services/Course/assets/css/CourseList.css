@@ -1,6 +1,8 @@
-.rightSide{
+.rightSideCourseList{
     position: absolute;
-    left: 350px;
+    left: 300px;
+    width: 100%;
+    top: 100px;
 }
 
 .pageTitle{
@@ -10,15 +12,6 @@
     padding-top: 40px;
 }
 
-.courseDetails{
-    position: relative;
-    top: 50px;
-    left: 100px;
-    width: 900px;
-    padding: 10px;
-    background-color: white;
-    border-radius: 30px;   
-}
 
 .courseDetailsTitle{
     font-size: 36px;
@@ -32,7 +25,40 @@
 }
 
 
-.singleCourse{
+/* .singleCourse{
     margin-top: 50px;
     padding: 10px;
+} */
+
+.courseList{
+    display: grid;
+    gap: 7em;
+    /* only max of three column can stay in a row */
+    /* grid-template-columns: auto auto auto; */
+
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+    overflow-x: hidden;
+    margin-top: 50px;
+    padding-left: 80px;
+    padding-right: 80px;
+    max-width: 1500px;
+}
+
+.singleCourseNew{
+    width: 100%;
+    text-align: left;
+    background-color: white !important;
+    border: 2px solid white;
+    border-radius: 30px;
+  }
+/* single course hover */
+.singleCourseNew:hover{
+    background-color: #f5f5f5;
+    border: 2px solid #0069d9;
+    padding-left: 50px;
+    transition: 0.3s
+}
+.cardBodyChange{
+    background: white;
+    text-align: left;
 }

@@ -4,6 +4,7 @@ import Sidebar from '../../../components/layout/Sidebar.js'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
 const SmartCardList = () => {
@@ -37,7 +38,7 @@ const SmartCardList = () => {
 
     return (
         <div>
-        <Sidebar />
+        <SidebarFinancialAdmin />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     Smart Card List

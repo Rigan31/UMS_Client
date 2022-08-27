@@ -12,7 +12,7 @@ export default function AddBook() {
 
     let navigate = useNavigate(); 
     const routeChangeToAddBook= () =>{ 
-        navigate('/add_book');
+        navigate('/library/add_book');
     }
     const save_book = (e) => {
         e.preventDefault();

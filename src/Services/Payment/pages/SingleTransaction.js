@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import { useLocation, useParams, Link } from "react-router-dom";
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
 const SingleTransaction= () => {
@@ -45,7 +46,7 @@ const SingleTransaction= () => {
 
     return (
         <div>
-        <Sidebar />
+        <SidebarFinancialAdmin />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     Transaction Data

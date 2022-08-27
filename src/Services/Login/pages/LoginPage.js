@@ -9,7 +9,7 @@ import loginImg from '../assets/images/login.webp'
 
 
 export default function LoginPage() {
-    const [who, setWho] = useState("");
+    const [who, setWho] = useState("student");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginState, setLoginState] = useState("");
@@ -42,7 +42,7 @@ export default function LoginPage() {
         navigate('/library_admin_home');
       }
       else if(who === "financial"){
-
+        navigate('/financial_admin/dashboard');
       }
       else if(who === "medical"){
         navigate('/medical_admin_home');

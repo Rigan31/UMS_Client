@@ -1,6 +1,6 @@
 import React, { useEffect,  useState } from 'react'
 import '../assets/css/AddCourse.css'
-import Sidebar from '../../../components/layout/Sidebar.js'
+import Sidebar from '../../../components/layout/SideBarHead'
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 import Card from 'react-bootstrap/Card';
@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
+import SidebarHead from '../../../components/layout/SideBarHead';
 
 
 const SingleCourse= () => {
@@ -84,16 +85,15 @@ const SingleCourse= () => {
 
     return (
         <div>
-        <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    CourseList
-                </div>
+        <SidebarHead />
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                Course
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
 
                 <div className='courseDetails'>
-                    <div className='courseDetailsTitle'>
-                        Department: CSE
-                    </div>
                     <div className='detailsForm'>
 
                     { backendData.map(course => {

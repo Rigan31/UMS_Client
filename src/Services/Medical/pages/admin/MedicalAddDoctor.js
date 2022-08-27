@@ -12,25 +12,26 @@ export default function MedicalAddDoctor() {
     const [specialization, setSpecialization] = useState([]);
 
     let navigate = useNavigate(); 
-    const routeChangeToAddDoctor= () =>{ 
-        navigate('/medical_add_doctor');
+    const routeChangeToAdminHome= () =>{ 
+        navigate('/medical/admin_home');
     }
     const save_doctor = (e) => {
+        console.log("elam")
         e.preventDefault();
-        Axios.post("http://localhost:5011/save_doctor", {
+        Axios.post("http://localhost:5010/save_doctor", {
             doctor_id: doctor_id,
             doctor_name: doctor_name,
             specialization: specialization
         }).then((response) => {
             console.log(response)
-            alert("Book Added!");
-            routeChangeToAddDoctor();
+            alert("Doctor Added!");
+            routeChangeToAdminHome();
         });
     }
 
     return (    
         <div className="def">
-            
+            <SidebarMedicalAdmin/>
             <div class="jumbotron text-center box" id="jumbotron">
                 <h1 class="display-3">Add Doctor</h1>
                 <p class="lead">Doctor Description</p>
@@ -44,7 +45,7 @@ export default function MedicalAddDoctor() {
                     <label>Specialization: </label>
                     <input type="specialization" class="form-control" id="specialization" placeholder="Specialization" onChange={e => setSpecialization(e.target.value)}/><br/>
                      
-                    <a type="button" class="btn btn-primary mb-2" href="http://localhost:3000/medical_admin_home">Add</a>
+                    <button type="submit" class="btn btn-primary mb-2" onClick={ e => save_doctor(e) }>Add</button>
                 </form>
             </div>
         </div>

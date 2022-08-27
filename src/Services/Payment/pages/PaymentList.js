@@ -4,6 +4,7 @@ import Sidebar from '../../../components/layout/Sidebar.js'
 import { useLocation, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
 const PaymentList = () => {
@@ -45,7 +46,7 @@ const PaymentList = () => {
 
     return (
         <div>
-        <Sidebar />
+        <SidebarFinancialAdmin />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     {title}
@@ -71,6 +72,9 @@ const PaymentList = () => {
                                     <Card.Link href={`singlepayment?student_id=${payment.student_id}&id=${payment.id}`}>
                                         Go to payment
                                     </Card.Link>
+                                    {/* <Card.Link href={`singlepayment?student_id=${payment.student_id}&id=${payment.id}`}>
+                                        Go to payment
+                                    </Card.Link> */}
                                 </Card.Body>
                                 </Card>
                             )

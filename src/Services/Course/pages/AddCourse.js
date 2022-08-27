@@ -62,32 +62,39 @@ const AddCourse = () => {
     return (
         <div>
         <SidebarHead />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    Add New Course
-                </div>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                Add New Course
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                
 
-                <div className='courseDetails'>
-                    <div className='courseDetailsTitle'>
+                <div className='courseDetailsAddCourse'>
+                    <div className='courseDetailsTitleAddCourse'>
                         Course Details
                     </div>
                     <div className='detailsForm'>
                         <Form onSubmit={(e)=> submit(e)}>
 
                             <Row className="mb-3">
-                                <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Label>Department Name</Form.Label>
-                                    <Form.Select id="deptName" onChange={(e)=> handle(e)} defaultValue="Choose...">
+                                <Form.Group className="formGroupPadding" as={Col} controlId="formGridState">
+                                    <Form.Label className="selectLabelMargin">Department Name</Form.Label>
+                                    <Form.Select className="formSelect" id="deptName" onChange={(e)=> handle(e)} defaultValue="Choose...">
                                         <option>Choose...</option>
                                         <option value="CSE">CSE</option>
                                         <option value="ME">ME</option>
                                         <option value="EEE">EEE</option>
-                                        <option value="ARCHI">ARCHI</option>
+                                        <option value="MME">MME</option>
+                                        <option value="CE">CE</option>
+                                        <option value="IPE">IPE</option>
+                                        <option value="ChE">ChE</option>
+                                        <option value="URP">URP</option>
                                     </Form.Select>
                                 </Form.Group>
                             </Row>
                             <Row className="mb-3">
-                                <Form.Group as={Col} controlId="formGridEmail">
+                                <Form.Group className="formGroupPadding" as={Col} controlId="formGridEmail">
                                 <Form.Label>Course Name</Form.Label>
                                 <Form.Control type="text" id="courseName" placeholder="" onChange={(e)=> handle(e)} />
                                 </Form.Group>
@@ -95,24 +102,24 @@ const AddCourse = () => {
                                 
                             </Row>
                             <Row className="mb-3">
-                                <Form.Group as={Col} controlId="formGridPassword">
+                                <Form.Group className="formGroupPadding" as={Col} controlId="formGridPassword">
                                 <Form.Label>Course ID</Form.Label>
                                 <Form.Control id="courseID" placeholder=""  onChange={(e)=> handle(e)} />
                                 </Form.Group>
                             </Row>
 
                             <Row className="mb-3">
-                                <Form.Group as={Col} controlId="formGridAddress1">
+                                <Form.Group className="formGroupPadding" as={Col} controlId="formGridAddress1">
                                     <Form.Label>Credit Hour</Form.Label>
                                     <Form.Control type="text" id="creditHour" placeholder="" onChange={(e)=> handle(e)}/>
                                 </Form.Group>
 
-                                <Form.Group as={Col} controlId="formGridAddress2">
+                                <Form.Group className="formGroupPadding" as={Col} controlId="formGridAddress2">
                                     <Form.Label>Level</Form.Label>
                                     <Form.Control type="text" id="level" placeholder=""  onChange={(e)=> handle(e)} />
                                 </Form.Group>
                                 
-                                <Form.Group as={Col} controlId="formGridCity">
+                                <Form.Group className="formGroupPadding" as={Col} controlId="formGridCity">
                                     <Form.Label>Term</Form.Label>
                                     <Form.Control type="text" id="term" placeholder=""  onChange={(e)=> handle(e)} />
                                 </Form.Group>
@@ -120,9 +127,9 @@ const AddCourse = () => {
                             
 
                             <Row className="mb-3">
-                                <Form.Group as={Col} controlId="formGridState">
-                                <Form.Label>Type</Form.Label>
-                                <Form.Select id="type" onChange={(e)=> handle(e)} defaultValue="Choose...">
+                                <Form.Group className="formGroupPadding" as={Col} controlId="formGridState">
+                                <Form.Label className="selectLabelMargin">Type</Form.Label>
+                                <Form.Select className="formSelect" id="type" onChange={(e)=> handle(e)} defaultValue="Choose...">
                                     <option>Choose...</option>
                                     <option>Theory</option>
                                     <option>Sessional</option>
@@ -131,7 +138,7 @@ const AddCourse = () => {
 
                             </Row>
 
-                            <Button variant="primary" type="submit">
+                            <Button className="submitButton"variant="primary" type="submit">
                                 Submit
                             </Button>
                             </Form>

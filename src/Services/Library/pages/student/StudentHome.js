@@ -14,10 +14,10 @@ export default function StudentHome() {
                 <h3 align="center">Library Home</h3><br/>
             <div class="row">
             <div class="column">
-                <div class="card"><Link to="/student_show_books">Show Books</Link></div>
+                <div class="card"><Link to="/library/student_show_books">Show Books</Link></div>
             </div>
             <div class="column">
-                <div class="card"><Link to="/student_show_borrow_info ">Show Borrow History</Link></div>
+                <div class="card"><Link to="/library/student_show_borrow_info ">Show Borrow History</Link></div>
             </div>
             </div>
             </div>

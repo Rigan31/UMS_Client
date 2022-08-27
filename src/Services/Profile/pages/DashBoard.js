@@ -11,8 +11,6 @@ const DashBoard = ({route, navigation}) => {
     //let username = location.state.username;
     const [username, setUsername] = useState("");
 
-    const [items, setItems] = useState("");
-
     useEffect(() => {
         const name= localStorage.getItem('username');
         setUsername(name);

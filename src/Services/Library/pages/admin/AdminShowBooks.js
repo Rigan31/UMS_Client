@@ -21,12 +21,16 @@ export default function AdminShowBooks() {
         <div> 
               
         <div className="container rounded bg-white mt-5 mb-5">
-            
+            <SidebarLibraryAdmin/>
+            <div className='rightSide'>
+                <div className='pageTitle'>
+                    Books List
+                </div>
             <div class="jumbotron">
                 <h1 class="display-4" align="center">Books List</h1>
                 
                 <hr class="my-4" />
-                <a class="btn btn-primary btn-lg" href="http://localhost:3000/admin_show_books_edit" role="button">Edit</a>
+                <a class="btn btn-primary btn-lg" href="http://localhost:3000/library/admin_show_books_edit" role="button">Edit</a>
             </div>
             <table class="table">
                 <thead>

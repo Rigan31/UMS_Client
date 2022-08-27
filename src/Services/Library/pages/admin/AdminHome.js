@@ -13,16 +13,16 @@ export default function AdminHome() {
                 <h3 align="center">Library Admin Homepage</h3><br/>
             <div class="row">
             <div class="column">
-                <div class="card"><Link to="/add_book">Add Book</Link></div>
+                <div class="card"><Link to="/library/add_book">Add Book</Link></div>
             </div>
             <div class="column">
-                <div class="card"><Link to="/grant_book">Grant Book</Link></div>
+                <div class="card"><Link to="/library/grant_book">Grant Book</Link></div>
             </div>
             <div class="column">
-                <div class="card"><Link to="/admin_show_books">Show Books</Link></div>
+                <div class="card"><Link to="/library/admin_show_books">Show Books</Link></div>
             </div>
             <div class="column">
-                <div class="card"><Link to="/admin_show_borrow_info">Show Borrow Info</Link></div>
+                <div class="card"><Link to="/library/admin_show_borrow_info">Show Borrow Info</Link></div>
             </div>
             </div>
             </div>

@@ -22,9 +22,10 @@
 }
 
 .cardDetailsTitle{
-    font-size: 36px;
-    font-weight: 600;
+    font-size: 30px;
+    font-weight: 400;
     padding: 10px;
+    margin-left: 20px;
 }
 
 .detailsForm{

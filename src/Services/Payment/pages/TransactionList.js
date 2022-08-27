@@ -4,6 +4,7 @@ import Sidebar from '../../../components/layout/Sidebar.js'
 import { useLocation, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
 const TransactionList = () => {
@@ -45,18 +46,20 @@ const TransactionList = () => {
 
     return (
         <div>
-        <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    {title}
-                </div>
+        <SidebarFinancialAdmin />
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                Transaction List
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
 
-                <div className='transactionDetails'>
+                <div className='transactionDetailsNew'>
                     <div className='detailsForm'>
                         { backendData.map(transaction => {
                             return(
-                                <Card className='singleTransaction'>
-                                <Card.Body >
+                                <Card className='singleCourseNew'>
+                                <Card.Body className='cardBodyChange'>
                                     <Card.Title>{transaction.student_id}</Card.Title>
                                     <Card.Text>
                                         <p>Id: {transaction.id}</p>

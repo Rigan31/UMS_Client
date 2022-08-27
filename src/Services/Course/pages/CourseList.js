@@ -9,13 +9,14 @@ import SidebarHead from '../../../components/layout/SideBarHead';
 
 const AddCourse = () => {
 
-    const deptName = "CSE";
-    const url = "http://localhost:5002/courselist?deptname=" + deptName; 
+    //const deptName = "CSE";
     
-
+    
     const [backendData, setBackendData] = useState([]);
+    const [username, setUsername] = useState("");
 
     useEffect(() => {
+
         const getCourse = async () =>{
           const courseFromServer = await fetchCourse()
           setBackendData(courseFromServer)
@@ -25,10 +26,15 @@ const AddCourse = () => {
     }, [])
     
     const fetchCourse = async () =>{
-      const res = await fetch(url);
-      const data = await res.json()
+        const name= localStorage.getItem('username');
+        setUsername(name);
+
+        console.log("teacher_id ??  ", name);
+        const url = "http://localhost:5002/courselist?headName=" + name; 
+        const res = await fetch(url);
+        const data = await res.json()
     
-      return data.data;
+        return data.data;
     }
 
 
@@ -38,22 +44,18 @@ const AddCourse = () => {
     return (
         <div>
         <SidebarHead />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    CourseList
-                </div>
-
-                <div className='courseDetails'>
-                    <div className='courseDetailsTitle'>
-                        Department: CSE
-                    </div>
-                    <div className='detailsForm'>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                Course List
+            </div>
+        </div>
+        <div className='rightSideCourseList'>
+                <div className='courseList'>
                     
-
                         { backendData.map(course => {
                             return(
-                                <Card className='singleCourse'>
-                                <Card.Body >
+                                <Card className='singleCourseNew'>
+                                <Card.Body className='cardBodyChange'>
                                     <Card.Title>{course.course_title}</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">{course.course_label}</Card.Subtitle>
                                     <Card.Text>
@@ -68,10 +70,6 @@ const AddCourse = () => {
                             )
                         })}
                         
-                    
-
-
-                    </div>
                 </div>
 
 

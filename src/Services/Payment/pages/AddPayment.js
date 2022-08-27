@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 const AddPayment = () => {
 
@@ -14,7 +15,10 @@ const AddPayment = () => {
     let navigate = useNavigate(); 
 
     const routeChangeToProfile = (student_id, id) =>{ 
-        const url = `../singlepayment?student_id=${student_id}&id=${id}`;
+        //const url = `../singlepayment?student_id=${student_id}&id=${id}`;
+        const url = `../financial_admin/singlepayment?student_id=${student_id}&id=${id}`;
+        
+
         navigate(url);
     }
 
@@ -55,7 +59,7 @@ const AddPayment = () => {
 
     return (
         <div>
-        <Sidebar />
+       <SidebarFinancialAdmin />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     Add New Due Payment

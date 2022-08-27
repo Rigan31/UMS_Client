@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
 const SinglePayment= () => {
@@ -108,7 +109,7 @@ const SinglePayment= () => {
 
     let navigate = useNavigate(); 
     const routeChangeToProfile = () =>{ 
-        const url = `../payment_list?type=single&student_id=${std_id}`;
+        const url = `../financial_admin/payment_list?type=single&student_id=${std_id}`;
         navigate(url);
     }
 
@@ -137,7 +138,7 @@ const SinglePayment= () => {
 
     return (
         <div>
-        <Sidebar />
+        <SidebarFinancialAdmin />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     Payment Data

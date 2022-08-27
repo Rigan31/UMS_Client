@@ -35,6 +35,7 @@ import ShowFeedbacks from './Services/Feedback/pages/admin/ShowFeedbacks'
 
 
 //  AMAR CODE
+//  AMAR CODE
 import SmartCardList from './Services/Payment/pages/SmartCardList'
 import SingleCard from './Services/Payment/pages/SingleCard'
 import AddCard from './Services/Payment/pages/AddCard'
@@ -44,6 +45,16 @@ import AddPayment from './Services/Payment/pages/AddPayment'
 import TransactionList from './Services/Payment/pages/TransactionList'
 import SingleTransaction from './Services/Payment/pages/SingleTransaction'
 import AddTransaction from './Services/Payment/pages/AddTransaction'
+
+import ScholarshipList from './Services/Scholarship/pages/ScholarshipList'
+import SingleScholarship from './Services/Scholarship/pages/SingleScholarship'
+import AddScholarship from './Services/Scholarship/pages/AddScholarship'
+import ApplyScholarship from './Services/Scholarship/pages/ApplyScholarship'
+import SingleAppliedScholarship from './Services/Scholarship/pages/SingleAppliedScholarship'
+import StateList from './Services/Scholarship/pages/StateList'
+import UpdateState from './Services/Scholarship/pages/UpdateState'
+import AppliedScholarshipList from './Services/Scholarship/pages/AppliedScholarshipList'
+import PendingList from './Services/Scholarship/pages/PendingList'
 
 // piyal code
 import MedicalAddDoctor from './Services/Medical/pages/admin/MedicalAddDoctor'
@@ -59,6 +70,12 @@ import MedicalStudentShowSchedule from './Services/Medical/pages/student/Medical
 import DashBoard from './Services/Profile/pages/DashBoard'
 import CourseRegAdvisor from './Services/Course/pages/CourseRegAdvisor'
 import SeeStudentProfile from './Services/Profile/pages/SeeStudentProfile'
+import FinancialDashboard from './Services/Payment/pages/FinancialDashboard'
+import StudentSingleCard from './Services/Payment/pages/StudentSingleCard'
+import StudentPaymentList from './Services/Payment/pages/StudentPaymentList'
+import StudentSinglePayment from './Services/Payment/pages/StudentSinglePayment'
+import StudentTransactionList from './Services/Payment/pages/StudentTransactionList'
+import StudentSingleTransaction from './Services/Payment/pages/StudentSingleTransaction'
 
 
 
@@ -99,22 +116,6 @@ export default function App() {
 
                     <Route path="/upload_feedback" element={ <UploadFeedback/> } />
                     
-
-
-                    {/* AMAR CODE */}
-                    <Route path="/smart_card_list" element={ <SmartCardList /> } />
-                    <Route path="/singlecard" element={ <SingleCard/> } />
-                    <Route path="/addcard" element={ <AddCard/> } />
-                    
-                    {/* //  payment_list?type=all / single & student_id=1 */}
-                    <Route path="/payment_list" element={ <PaymentList /> } /> 
-                    <Route path="/singlepayment" element={ <SinglePayment/> } />
-                    <Route path="/addpayment" element={ <AddPayment/> } /> 
-                    
-                    {/* //  transaction_list?type=all / single & student_id=1 */}
-                    <Route path="/transaction_list" element={ <TransactionList /> } /> 
-                    <Route path="/singletransaction" element={ <SingleTransaction/> } />
-                    <Route path="/addtransaction" element={ <AddTransaction/> } /> 
                     
 
 
@@ -139,7 +140,7 @@ export default function App() {
                     <Route path="/head/show_feedbacks" element={ <ShowFeedbacks/> } />
                     <Route path="/head/addcourse" element={<AddCourse />} />
                     <Route path="/head/courselist" element={<CourseList />} />
-                    <Route path="/singlecourse/:courseId" element={ <SingleCourse/> } />
+                    <Route path="/head/singlecourse/:courseId" element={ <SingleCourse/> } />
 
 
 
@@ -173,7 +174,57 @@ export default function App() {
                     <Route path="/medical_student_show_schedule" element={ <MedicalStudentShowSchedule/> } />
 
 
+
+
+
+
                     {/* Financial admin */}
+                        <Route path="/financial_admin/dashboard" element={ <FinancialDashboard/> } />
+                        <Route path="/financial_admin/smart_card_list" element={ <SmartCardList /> } />
+                        <Route path="/financial_admin/singlecard" element={ <SingleCard/> } />
+                        <Route path="/financial_admin/addcard" element={ <AddCard/> } />
+                        
+                        {/* //  payment_list?type=all / single & student_id=1 */}
+                        <Route path="/financial_admin/payment_list" element={ <PaymentList /> } /> 
+                        <Route path="/financial_admin/singlepayment" element={ <SinglePayment/> } />
+                        <Route path="/financial_admin/addpayment" element={ <AddPayment/> } /> 
+                        
+                        {/* //  transaction_list?type=all / single & student_id=1 */}
+                        <Route path="/financial_admin/transaction_list" element={ <TransactionList /> } /> 
+                        <Route path="/financial_admin/singletransaction" element={ <SingleTransaction/> } />
+                        <Route path="/financial_admin/addtransaction" element={ <AddTransaction/> } />  
+
+
+                     {/* Student financial */}
+                        <Route path="/singlecard" element={ <StudentSingleCard/> } />
+                        
+                        {/* //  payment_list?type=all / single & student_id=1 */}
+                        <Route path="/payment_list" element={ <StudentPaymentList /> } /> 
+                        <Route path="/singlepayment" element={ <StudentSinglePayment/> } />
+                        
+                        {/* //  transaction_list?type=all / single & student_id=1 */}
+                        <Route path="/transaction_list" element={ <StudentTransactionList /> } /> 
+                        <Route path="/singletransaction" element={ <StudentSingleTransaction /> } />
+
+
+
+
+
+
+                       
+
+                    {/* AMAR CODE 2 */}
+                    <Route path="/scholarship_list" element={ <ScholarshipList /> } />
+                    <Route path="/single_scholarship" element={ <SingleScholarship/> } />
+                    <Route path="/add_scholarship" element={ <AddScholarship/> } />
+
+                    <Route path="/applied_scholarship_list" element={ <AppliedScholarshipList /> } />
+                    <Route path="/pending_scholarship_list" element={ <PendingList /> } /> 
+                    <Route path="/apply_scholarship" element={ <ApplyScholarship /> } /> 
+                    <Route path="/single_apply_scholarship" element={ <SingleAppliedScholarship /> } /> 
+
+                    <Route path="/scholarship_state_list" element={ <StateList /> } />
+                    <Route path="/update_scholarship_state" element={ <UpdateState/> } />
                     
                 </Routes>
                 

@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 const AddTransaction = () => {
 
@@ -19,9 +20,13 @@ const AddTransaction = () => {
     const url = "http://localhost:5022/payment/create_transaction"
     let navigate = useNavigate(); 
     const query = new URLSearchParams(useLocation().search);
+    const std_id = query.get("student_id");
+    const type_id = query.get("type_id");
 
     const routeChangeToProfile = (student_id, id) =>{ 
-        const url = `../singleTransaction?student_id=${student_id}&id=${id}`;
+        //const url = `../singleTransaction?student_id=${student_id}&id=${id}`;
+        const url = `../financial_admin/singleTransaction?student_id=${student_id}&id=${id}`;
+        
         navigate(url);
     }
 
@@ -67,11 +72,14 @@ const AddTransaction = () => {
 
     return (
         <div>
-        <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    Add New Transaction
-                </div>
+        <SidebarFinancialAdmin />
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                Add New Transaction
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+               
 
                 <div className='paymentDetails'>
                     <div className='transactionDetailsTitle'>
@@ -90,7 +98,7 @@ const AddTransaction = () => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label>Card No</Form.Label>
-                                <Form.Control type="text" id="card_no" defaultValue={data.card_no} onChange={(e)=> handle(e)}/>
+                                <Form.Control type="text" id="card_no" defaultValue="Insert card no" onChange={(e)=> handle(e)}/>
                             </Form.Group>
                         </Row>
 
@@ -111,7 +119,7 @@ const AddTransaction = () => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label>Trx Id</Form.Label>
-                                <Form.Control type="text" id="trx_id" defaultValue={data.trx_id} onChange={(e)=> handle(e)}/>
+                                <Form.Control type="text" id="trx_id" defaultValue="Insert transaction id" onChange={(e)=> handle(e)}/>
                             </Form.Group>
                         </Row>
 
@@ -125,7 +133,24 @@ const AddTransaction = () => {
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
-                            </Form>
+                        <span>&nbsp; &nbsp;</span>
+                        
+                        {/* <Button variant="warning">
+                             <a href={`singlepayment?student_id=${data.student_id}&id=${data.type_id}`} 
+                                style={{color:'white'}}>Go Back</a>
+                            </Button> */}
+
+                        {
+                            type_id != null && std_id != null ?
+
+                                <Button variant="warning">
+                                <a href={`singlepayment?student_id=${data.student_id}&id=${data.type_id}`} 
+                                    style={{color:'white'}}>Go Back</a>
+                                </Button>
+                            : <p></p>
+                        }
+
+                        </Form>
                     
                     
                     

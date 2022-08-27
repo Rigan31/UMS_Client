@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 const AddCard = () => {
 
@@ -17,7 +18,8 @@ const AddCard = () => {
     let navigate = useNavigate(); 
 
     const routeChangeToProfile = (student_id, card_no) =>{ 
-        const url = `../singlecard?student_id=${student_id}&card_no=${card_no}`;
+        // const url = `../singlecard?student_id=${student_id}&card_no=${card_no}`;
+        const url = `../financial_admin/singlecard?student_id=${student_id}&card_no=${card_no}`;
         navigate(url);
     }
 
@@ -55,7 +57,7 @@ const AddCard = () => {
 
     return (
         <div>
-        <Sidebar />
+        <SidebarFinancialAdmin />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     Add New Smart Card

@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
 const SingleCard= () => {
@@ -85,7 +86,7 @@ const SingleCard= () => {
 
     let navigate = useNavigate(); 
     const routeChangeToProfile = () =>{ 
-        const url = `../smart_card_list`;
+        const url = `../financial_admin/smart_card_list`;
         navigate(url);
     }
 
@@ -110,7 +111,7 @@ const SingleCard= () => {
 
     return (
         <div>
-        <Sidebar />
+        <SidebarFinancialAdmin />
         <div className='rightSide'>
                 <div className='pageTitle'>
                     Card Data

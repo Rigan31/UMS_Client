@@ -2,6 +2,7 @@ import React from 'react'
 import {Navigation} from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 import '../../assets/css/SideBar.css'
+import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from "react-router-dom";
 import {CgHomeAlt} from "react-icons/cg";
 import {CgProfile} from "react-icons/cg";
@@ -18,6 +19,18 @@ import {IoLibraryOutline} from "react-icons/io5";
 const Sidebar = () => {
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [loggedInName, setLoggedInName] = useState("");
+
+
+    useEffect(() => {
+        const name= localStorage.getItem('username');
+        setLoggedInName(name);
+        //console.log("username: ", username);
+        //console.log("items: ", name);
+    
+    }, []);
+
   return (
     <div className='sidebar'>
       {/* div with className title */}
@@ -72,24 +85,34 @@ const Sidebar = () => {
                   
               },
               {
-                  title: "Dues Status",
-                  itemId: "/dues",
-                  // Optional
+                  title: "Payment",
+                  itemId: "/singlecard?student_id=" + loggedInName,
                   elemBefore: () => <GrMoney />,
+                  // Optional
+                  subNav: [
+                    {
+                      title: "Smart Card",
+                      itemId: "../singlecard?student_id=" + loggedInName,
+                      // Optional
+                      elemBefore: () => <TbSchool />,
+                    },
+                    {
+                      title: "Payment History",
+                      itemId: "../payment_list?type=single&student_id=" + loggedInName,
+                      // Optional
+                      elemBefore: () => <TbSchool />,
+                    },
+                    {
+                      title: "Transaction History",
+                      itemId: "../transaction_list?type=single&student_id=" + loggedInName,
+                      // Optional
+                      elemBefore: () => <TbSchool />,
+                    },
+                  ]
+
                   
               },
-              // {
-              //     title: "Registration",
-              //     itemId: "/registration",
-              //     subNav: [
-              //       {
-              //         title: "Teams",
-              //         itemId: "/another/teams"
-              //         // Optional
-              //         // elemBefore: () => <Icon name="calendar" />
-              //       }
-              //     ]
-              // },
+              
             ]}
             />
       </div>
