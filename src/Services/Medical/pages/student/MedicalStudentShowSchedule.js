@@ -4,11 +4,22 @@ import { useNavigate } from 'react-router-dom';
 import Axios from 'axios'
 import Sidebar from '../../../../components/layout/Sidebar';
 
-export default function MedicalStudentShowSchedule() {
+export default function MedicalAdminShowSchedule() {
     
+    const [backendData, setBackendData] = useState("")
+    useEffect(() => {
+        fetch("http://localhost:5010/get_schedule").then(
+        response => response.json()
+        ).then(
+        data => {
+            setBackendData(data)
+        }
+        )
+    }, [])
+
     return (    
         <div className="container rounded bg-white mt-5 mb-5">
-           <Sidebar/>
+           <Sidebar />
             <div class="jumbotron">
                 <h1 class="display-4" align="center">Schedule of Doctors</h1>
                 
@@ -19,6 +30,7 @@ export default function MedicalStudentShowSchedule() {
                 <thead>
                     <tr>
                     <th scope="col">Doctor Name</th>
+                    <th scope="col">Specialization</th>
                     <th scope="col">Sat</th>
                     <th scope="col">Sun</th>
                     <th scope="col">Mon</th>
@@ -29,36 +41,27 @@ export default function MedicalStudentShowSchedule() {
                     </tr>
                 </thead>
                 <tbody>
-                   <tr>
-                    <td>Dr. Abul Kashem</td>
-                    <td>9am-1pm</td>
-                    <td>9am-1pm</td>
-                    <td> - </td>
-                    <td>9am-1pm</td>
-                    <td>9am-1pm</td>
-                    <td>Holiday</td>
-                    <td>Holiday</td>
-                   </tr>
-                   <tr>
-                    <td>Dr. Makbul</td>
-                    <td>9am-1pm</td>
-                    <td>9am-1pm</td>
-                    <td> - </td>
-                    <td> - </td>
-                    <td>9am-1pm</td>
-                    <td>Holiday</td>
-                    <td>Holiday</td>
-                   </tr>
-                   <tr>
-                    <td>Dr. Ali</td>
-                    <td>9am-1pm</td>
-                    <td>9am-1pm</td>
-                    <td> - </td>
-                    <td>9am-1pm</td>
-                    <td> - </td>
-                    <td>Holiday</td>
-                    <td>Holiday</td>
-                   </tr>                   
+                    {
+                    (typeof backendData.results === 'undefined') ? (
+                        <p>loading...</p>
+                    ) : (
+                    backendData.results.map((result, i) => (  
+                        
+                        <tr>
+                        <td>{result.name}</td>
+                        <td>{result.specialization}</td>
+                        <td>{result.sat}</td>
+                        <td>{result.sun}</td>
+                        <td>{result.mon}</td>
+                        <td>{result.tue}</td>
+                        <td>{result.wed}</td>
+                        <td>{result.thu}</td>
+                        <td>{result.fri}</td>
+                        </tr>
+                    )
+                    )
+                    )
+                    }                    
                 </tbody>
                 </table>
         </div>

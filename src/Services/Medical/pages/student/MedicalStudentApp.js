@@ -7,7 +7,52 @@ import TextField from '@material-ui/core/TextField';
 import Sidebar from '../../../../components/layout/Sidebar';
 
 export default function MedicalStudentApp() {
+    //let location = useLocation();
+    //let student_id = location.state.username;
+    const [backendData, setBackendData] = useState("")
+    const [doctor_name, setDoctorName] = useState("")
+
     
+    const [date, setDate] = useState("")
+    const [username, setUsername] = useState("");
+
+    //const [items, setItems] = useState("");
+
+    useEffect(() => {
+        const name= localStorage.getItem('username');
+        setUsername(name);
+        console.log("username: ", username);
+        console.log("items: ", name);
+    
+    }, []);
+
+    let navigate = useNavigate(); 
+    const routeChangeToStudentHome= () =>{ 
+        navigate('/medical/student_home');
+    }
+    useEffect(() => {
+        fetch("http://localhost:5010/get_schedule").then(
+        response => response.json()
+        ).then(
+        data => {
+            setBackendData(data)
+        }
+        )
+    }, [])
+
+    const set_appointment= (e) => {
+        e.preventDefault();
+        Axios.post("http://localhost:5010/set_appointment", {
+            doctor_name: doctor_name,
+            student_id: username,
+            date: date,
+        }).then((response) => {
+            console.log(response)
+            alert("Appointment Confirmed!");
+            routeChangeToStudentHome();
+        });
+    }
+
     return (    
         <div>
             <Sidebar/>
@@ -32,29 +77,29 @@ export default function MedicalStudentApp() {
                     InputLabelProps={{
                     shrink: true,
                     }}
+                    onChange={ e => {setDate(e.target.value)} }
                 />          
                 </div>
                 <br/>
-
-                    <label for="specialization">Specialization : </label>
-                    <select id="specialization" name="specialization" class="btn btn-secondary dropdown-toggle">
-                        <option selected>Select Specialization</option>
-                        <option>Orthopedics</option>
-                        <option>Gastrology</option>
-                        <option>Psychologist</option>
-                    </select>
-                    
                 </div>
                 <label for="doctor">Doctors : </label>
-                    <select id="doctor" name="doctor" class="btn btn-secondary dropdown-toggle">
-                        <option selected>Select Doctor</option>
-                        <option>Md. Abul Kashem</option>
-                        <option>Dr. Kabir</option>
-                        <option>Dr. Saiful</option>
+                <select id="doctor" name="doctor" class="btn btn-secondary dropdown-toggle">
+                    <option selected>Select Doctor</option>
+                {
+                    (typeof backendData.results === 'undefined') ? (
+                        <p>loading...</p>
+                    ) : (
+                    backendData.results.map((result, i) => (  
+                        <option onClick={ e => {setDoctorName(result.name)} }>{result.name} ({result.specialization}) </option>
+                        
+                    )
+                    )
+                    )
+                    }     
                     </select>
                 
                     <br/> <br/>
-                    <a type="button" class="btn btn-primary mb-2" href="http://localhost:3000/medical_student_home">Book</a>
+                    <button type="submit" class="btn btn-primary mb-2" onClick={ e => set_appointment(e) }>Book</button>
                 </form>
             </div>
         </div>

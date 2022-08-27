@@ -105,14 +105,14 @@ const Sidebar = () => {
             items={[
               {
                   title: "Feedback",
-                  itemId: "/feedback",
+                  itemId: "/upload_feedback",
                   // Optional
                   elemBefore: () => <MdOutlineFeedback />,
                   
               },
               {
                   title: "Library",
-                  itemId: "/library_student_home",
+                  itemId: "/library/student_home",
                   // Optional
                   elemBefore: () => <IoLibraryOutline />,
                   //change item color to blue
@@ -123,11 +123,12 @@ const Sidebar = () => {
               },
               {
                   title: "Medical Center",
-                  itemId: "/medical_student_home",
+                  itemId: "/medical/student_home",
                   // Optional
                   elemBefore: () => <MdOutlineMedicalServices />,
                   
               },
+              
             ]}
           />
         </div>

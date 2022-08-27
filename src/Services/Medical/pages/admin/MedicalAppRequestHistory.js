@@ -2,30 +2,16 @@ import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios'
-import Sidebar from '../../../../components/layout/Sidebar';
+import SidebarMedicalAdmin from '../../../../components/layout/SidebarMedicalAdmin';
 
 export default function MedicalAppRequest() {
     const [backendData, setBackendData] = useState([])
     const [id, setId] = useState("")
     const [status, setStatus] = useState("")
-    const [username, setUsername] = useState("");
-
-        // //const [items, setItems] = useState("");
-
-        // useEffect(() => {
-            
-        
-        // }, []);
-    
     useEffect(() => {
-        
         const fetchData = async () => {
-            const name= localStorage.getItem('username');
-            setUsername(name);
-            console.log("username: ", username);
-            console.log("items: ", name);
             console.log("elam ekhane")
-            await fetch("http://localhost:5010/get_appointment_history_student?logged_in="+name).then(
+            await fetch("http://localhost:5010/get_appointment_history").then(
             response => response.json()
             ).then(
             data => {
@@ -55,7 +41,7 @@ export default function MedicalAppRequest() {
     }
     return (    
         <div className="container rounded bg-white mt-5 mb-5">
-           <Sidebar/>
+           <SidebarMedicalAdmin/>
             <div class="jumbotron">
                 <h1 class="display-4" align="center">Appointment History List</h1>
                 
@@ -91,6 +77,7 @@ export default function MedicalAppRequest() {
                     } 
                 </tbody>
                 </table>
+                <a class="btn btn-primary btn-lg" align="center" href="http://localhost:3000/medical/app_request" role="button">Pendings</a>
         </div>
     )
 }

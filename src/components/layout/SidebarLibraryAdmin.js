@@ -40,33 +40,33 @@ const SidebarLibraryAdmin = () => {
             items={[
               {
                 title: "HomePage",
-                itemId: "/library_admin_home",
+                itemId: "/library/admin_home",
                 elemBefore: () => <CgHomeAlt />,
                 
               },
               {
                 title: "Add Book",
-                itemId: "/add_book",
+                itemId: "/library/add_book",
                 activeColor: '#0069d9',
                 elemBefore: () => <CgProfile/>,
                 
               },
               {
                 title: "Grant Book",
-                itemId: "/grant_book",
+                itemId: "/library/grant_book",
                 elemBefore: () => <MdAppRegistration/>,
                 
               },
               {
                   title: "Show Books",
-                  itemId: "/admin_show_books",
+                  itemId: "/library/admin_show_books",
                   // Optional
                   elemBefore: () => <CgList />,
                   
               },
               {
                   title: "Show Borrow Info",
-                  itemId: "/admin_show_borrow_info",
+                  itemId: "/library/admin_show_borrow_info",
                   // Optional
                   elemBefore: () => <TbSchool />,
                   

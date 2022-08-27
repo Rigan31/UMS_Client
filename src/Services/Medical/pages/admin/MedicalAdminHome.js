@@ -6,31 +6,24 @@ import '../../assets/css/AdminHome.css';
 import SidebarMedicalAdmin from '../../../../components/layout/SidebarMedicalAdmin';
 export default function MedicalAdminHome() {
 
-    return (
-        <div>
-            <SidebarMedicalAdmin />
-            <div className="rightSide">
-            <div className="def">
-            
+    return (    
+        <div className="def">
+            <SidebarMedicalAdmin/>
             <div class="jumbotron">
                 <h3 align="center">Medical Admin Homepage</h3><br/>
             <div class="row">
             <div class="column">
-                <div class="card"><Link to="/medical_add_doctor">Add Doctor</Link></div>
+                <div class="card"><Link to="/medical/add_doctor">Add Doctor</Link></div>
             </div>
             <div class="column">
-                <div class="card"><Link to="/medical_admin_show_schedule">Show Schedule</Link></div>
+                <div class="card"><Link to="/medical/admin_show_schedule">Show Schedule</Link></div>
             </div>
             <br/>
             <div class="column2">
-                <div class="card"><Link to="/medical_app_request">Show Appointment Requests</Link></div>
+                <div class="card"><Link to="/medical/app_request">Show Appointment Requests</Link></div>
             </div>
             </div>
             </div>
         </div>
-            </div>
-        </div>   
-
-        
     )
 }

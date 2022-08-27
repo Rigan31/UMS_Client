@@ -21,7 +21,7 @@ export default function AdminShowBooksEdit() {
     let navigate = useNavigate(); 
         const routeChangeToAdminShowBooks= () =>{ 
             alert("Books Updated!");
-            navigate('/admin_show_books');
+            navigate('/library/admin_show_books');
         }
 
     const update_books= (e) => {
