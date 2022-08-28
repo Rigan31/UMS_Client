@@ -1,0 +1,32 @@
+.rightSide{
+    position: relative;
+    left: 350px;
+}
+
+.pageTitle{
+    font-size: 40px;
+    font-weight: 900;   
+    padding-left: 40px;
+    padding-top: 40px;
+}
+
+.courseDetails{
+    position: relative;
+    top: 50px;
+    left: 100px;
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border-radius: 30px;   
+}
+
+.courseDetailsTitle{
+    font-size: 36px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.detailsForm{
+    padding: 30px;
+    background-color: white;
+}
