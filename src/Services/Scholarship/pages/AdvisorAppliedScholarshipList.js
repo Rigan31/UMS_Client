@@ -10,9 +10,10 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useLocation, useParams, Link } from "react-router-dom";
 import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
+import SideBarAdvisor from '../../../components/layout/SideBarAdvisor';
 
 
-const AppliedScholarshipList = () => {
+const AdvisorAppliedScholarshipList = () => {
 
     const query = new URLSearchParams(useLocation().search);
     const schol_name = query.get("name");
@@ -114,7 +115,7 @@ const AppliedScholarshipList = () => {
 
     return (
         <div>
-        <SidebarFinancialAdmin />
+        <SideBarAdvisor />
         <div className='containerTitle'>
             <div className='pageTitleNew'>
                     Applied Scholarship List
@@ -195,4 +196,4 @@ const AppliedScholarshipList = () => {
     )
 }
 
-export default AppliedScholarshipList
+export default AdvisorAppliedScholarshipList

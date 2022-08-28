@@ -139,15 +139,13 @@ const SinglePayment= () => {
     return (
         <div>
         <SidebarFinancialAdmin />
-        <div className='rightSide'>
-                <div className='pageTitle'>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
                     Payment Data
-                </div>
-
-                <div className='paymentDetails'>
-                    <div className='paymentDetailsTitle'>
-                        Payment Data
-                    </div>
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                <div className='transactionDetailsNew'>
                     <div className='detailsForm'>
                         <div className="alert alert-warning">
                             <strong>Warning!</strong> In case of editing student id, transaction it must be done alone.

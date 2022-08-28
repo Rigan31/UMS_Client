@@ -12,11 +12,11 @@ import { useLocation, useParams, Link } from "react-router-dom";
 import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
-const AppliedScholarshipList = () => {
+const StudentAppliedScholarshipList = () => {
 
     const query = new URLSearchParams(useLocation().search);
     const schol_name = query.get("name");
-    const std_id = query.get("student_id");
+    const std_id = localStorage.getItem("username");
     const sess = query.get("session");
 
     const url = "http://localhost:5023/scholarship/applied_scholarship_list"; 
@@ -29,8 +29,7 @@ const AppliedScholarshipList = () => {
         if(sess != null && !Number.isNaN(parseInt(sess))) ret.session = sess;
         else ret.session = "";
         
-        if(std_id != null && !Number.isNaN(parseInt(std_id))) ret.student_id = std_id;
-        else ret.student_id = "";
+        ret.student_id = std_id;
         
         if(schol_name != null) ret.name = schol_name;
         else ret.name = "";
@@ -66,16 +65,13 @@ const AppliedScholarshipList = () => {
             started = true;
             url_p += "session="+search.session;
         }
-        if(search.student_id != "" && !Number.isNaN(parseInt(search.student_id))) {
-            if(started) url_p += "&";
-            started = true;
-            url_p += "student_id="+search.student_id;
-        }
         if(search.name != "") {
             if(started) url_p += "&";
             started = true;
             url_p += "name="+search.name;
         }
+        if(started) url_p += "&";
+        url_p += "student_id="+search.student_id;
         return url_p;
     }
 
@@ -114,10 +110,10 @@ const AppliedScholarshipList = () => {
 
     return (
         <div>
-        <SidebarFinancialAdmin />
+        <Sidebar />
         <div className='containerTitle'>
             <div className='pageTitleNew'>
-                    Applied Scholarship List
+                    Applied Scholarship List of {search.student_id}
             </div>
         </div>
         <div className='rightSideAddCourse'>
@@ -130,10 +126,6 @@ const AppliedScholarshipList = () => {
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label><h5>Search Session</h5></Form.Label>
                                     <Form.Control type="text" id="session" defaultValue={search.session} onChange={(e)=> handle(e)} />
-                            </Form.Group> 
-                            <Form.Group as={Col} controlId="formGridAddress1">
-                                <Form.Label><h5>Search Student_id</h5></Form.Label>
-                                    <Form.Control type="text" id="student_id" defaultValue={search.student_id} onChange={(e)=> handle(e)} />
                             </Form.Group> 
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label><h5>Search Scholarship Name</h5></Form.Label>
@@ -195,4 +187,4 @@ const AppliedScholarshipList = () => {
     )
 }
 
-export default AppliedScholarshipList
+export default StudentAppliedScholarshipList

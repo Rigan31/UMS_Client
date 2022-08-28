@@ -11,7 +11,7 @@ const StudentTransactionList = () => {
 
     const query = new URLSearchParams(useLocation().search);
     let type = query.get("type");
-    let std_id = query.get("student_id");
+    let std_id = localStorage.getItem("username");
 
     if(type == null) type = "all";
 
@@ -49,7 +49,7 @@ const StudentTransactionList = () => {
         <Sidebar />
         <div className='containerTitle'>
             <div className='pageTitleNew'>
-                Transaction List
+                {title}
             </div>
         </div>
         <div className='rightSideAddCourse'>
@@ -58,7 +58,7 @@ const StudentTransactionList = () => {
                     <div className='detailsForm'>
                         { backendData.map(transaction => {
                             return(
-                                <Card className='singleCourseNew'>
+                                <Card className='singleCourseNew' style={{marginBottom:'20px'}}>
                                 <Card.Body className='cardBodyChange'>
                                     <Card.Title>{transaction.student_id}</Card.Title>
                                     <Card.Text>

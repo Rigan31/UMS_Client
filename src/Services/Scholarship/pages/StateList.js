@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useLocation, useParams, Link } from "react-router-dom";
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
 const StateList = () => {
@@ -22,12 +23,20 @@ const StateList = () => {
     const url = "http://localhost:5023/scholarship/scholarship_state_list?type=single&applied_id="+applied_id; 
     
     const [backendData, setBackendData] = useState([]);
+    const [isDone, setDone] = useState(false);
     
     useEffect(() => {
         const getData = async () =>{
           const scholarship_list = await fetchList(url)
           
           setBackendData(scholarship_list)
+          
+          for(let i=0; i<scholarship_list.length; i++){
+            if(scholarship_list[i].location == 'Rejected' || scholarship_list[i].location == 'Accepted'){
+                setDone(true);
+                break;
+            }
+          }            
         }
     
         getData();
@@ -59,15 +68,15 @@ const StateList = () => {
 
     return (
         <div>
-        <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    Scholarship State List
-                </div>
-
-                <div className='scholarshipDetails'>
+        <SidebarFinancialAdmin />
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                    Scholarship List
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                <div className='transactionDetailsNew'>
                     <div className='scholarshipDetailsTitle'>
-                        Scholarship States
                         <br />
                         <span>&nbsp; &nbsp;</span>
                         <Button variant="primary" onClick={(e)=> sortData("up")}>
@@ -85,16 +94,20 @@ const StateList = () => {
                         </Button>
                         
                         <span>&nbsp; &nbsp;</span>
-                        <Button variant="primary">   
-                            <a href={`update_scholarship_state?student_id=${std_id}&session_id=${sess}&applied_id=${applied_id}&name=${schol_name}`} style={{color:'white'}}>Add State</a>
-                        </Button>
+                        {
+                            isDone == false ?
+                                <Button variant="primary">   
+                                    <a href={`update_scholarship_state?student_id=${std_id}&session_id=${sess}&applied_id=${applied_id}&name=${schol_name}`} style={{color:'white'}}>Add State</a>
+                                </Button>
+                            :   <p></p>
+                        }
                     </div>
                     <div className='detailsForm'>
                     
                         { backendData.map(state => {
                             return(
-                                <Card className='singleScholarship'>
-                                <Card.Body >
+                                <Card className='singleCourseNew' style={{marginBottom:'20px'}}>
+                                <Card.Body className='cardBodyChange'>
                                     <Card.Title>{state.location}</Card.Title>
                                     <Card.Text>
                                         <p>Updated by: {state.updated_by}</p>

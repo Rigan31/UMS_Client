@@ -78,6 +78,26 @@ import StudentPaymentList from './Services/Payment/pages/StudentPaymentList'
 import StudentSinglePayment from './Services/Payment/pages/StudentSinglePayment'
 import StudentTransactionList from './Services/Payment/pages/StudentTransactionList'
 import StudentSingleTransaction from './Services/Payment/pages/StudentSingleTransaction'
+import StudentScholarshipList from './Services/Scholarship/pages/StudentScholarshipList'
+import HeadScholarshipList from './Services/Scholarship/pages/HeadScholarshipList'
+import AdvisorScholarshipList from './Services/Scholarship/pages/AdvisorScholarshipList'
+import HeadSingleScholarship from './Services/Scholarship/pages/HeadSingleScholarship'
+import AdvisorSingleScholarship from './Services/Scholarship/pages/AdvisorSingleScholarship'
+import StudentSingleScholarship from './Services/Scholarship/pages/StudentSingleScholarship'
+import HeadAppliedScholarshipList from './Services/Scholarship/pages/HeadAppliedScholarshipList'
+import AdvisorAppliedScholarshipList from './Services/Scholarship/pages/AdvisorAppliedScholarshipList'
+import StudentAppliedScholarshipList from './Services/Scholarship/pages/StudentAppliedScholarshipList'
+import HeadSingleAppliedScholarship from './Services/Scholarship/pages/HeadSingleAppliedScholarship'
+import AdvisorSingleAppliedScholarship from './Services/Scholarship/pages/AdvisorSingleAppliedScholarship'
+import StudentSingleAppliedScholarship from './Services/Scholarship/pages/StudentSingleAppliedScholarship'
+import AdvisorUpdateState from './Services/Scholarship/pages/AdvisorUpdateState'
+import HeadUpdateState from './Services/Scholarship/pages/HeadUpdateState'
+import AdvisorStateList from './Services/Scholarship/pages/AdvisorStateList'
+import HeadStateList from './Services/Scholarship/pages/HeadStateList'
+import StudentStateList from './Services/Scholarship/pages/StudentStateList'
+import AdvisorPendingList from './Services/Scholarship/pages/AdvisorPendingList'
+import HeadPendingList from './Services/Scholarship/pages/HeadPendingList'
+import StudentPendingList from './Services/Scholarship/pages/StudentPendingList'
 
 
 
@@ -180,6 +200,14 @@ export default function App() {
 
 
 
+
+
+
+
+                    {/* Asif */}
+
+
+
                     {/* Financial admin */}
                         <Route path="/financial_admin/dashboard" element={ <FinancialDashboard/> } />
                         <Route path="/financial_admin/smart_card_list" element={ <SmartCardList /> } />
@@ -198,15 +226,16 @@ export default function App() {
 
 
                      {/* Student financial */}
-                        <Route path="/singlecard" element={ <StudentSingleCard/> } />
+                        <Route path="/student/card" element={ <StudentSingleCard/> } />
+                        <Route path="/student/card/singlecard" element={ <StudentSingleCard/> } />
                         
                         {/* //  payment_list?type=all / single & student_id=1 */}
-                        <Route path="/payment_list" element={ <StudentPaymentList /> } /> 
-                        <Route path="/singlepayment" element={ <StudentSinglePayment/> } />
+                        <Route path="/student/card/payment_list" element={ <StudentPaymentList /> } /> 
+                        <Route path="/student/card/singlepayment" element={ <StudentSinglePayment/> } />
                         
                         {/* //  transaction_list?type=all / single & student_id=1 */}
-                        <Route path="/transaction_list" element={ <StudentTransactionList /> } /> 
-                        <Route path="/singletransaction" element={ <StudentSingleTransaction /> } />
+                        <Route path="/student/card/transaction_list" element={ <StudentTransactionList /> } /> 
+                        <Route path="/student/card/singletransaction" element={ <StudentSingleTransaction /> } />
 
 
 
@@ -215,18 +244,39 @@ export default function App() {
 
                        
 
-                    {/* AMAR CODE 2 */}
-                    <Route path="/scholarship_list" element={ <ScholarshipList /> } />
-                    <Route path="/single_scholarship" element={ <SingleScholarship/> } />
-                    <Route path="/add_scholarship" element={ <AddScholarship/> } />
+                    {/* SHOLARSHP */}
+                        <Route path="/financial_admin/scholarship_list" element={ <ScholarshipList /> } />
+                        <Route path="/financial_admin/single_scholarship" element={ <SingleScholarship/> } />
+                        <Route path="/financial_admin/add_scholarship" element={ <AddScholarship/> } />
+                        <Route path="/financial_admin/applied_scholarship_list" element={ <AppliedScholarshipList /> } />
+                        <Route path="/financial_admin/single_apply_scholarship" element={ <SingleAppliedScholarship /> } />
+                        <Route path="/financial_admin/update_scholarship_state" element={ <UpdateState/> } />
+                        <Route path="/financial_admin/scholarship_state_list" element={ <StateList /> } />
+                        <Route path="/financial_admin/pending_scholarship_list" element={ <PendingList /> } />
 
-                    <Route path="/applied_scholarship_list" element={ <AppliedScholarshipList /> } />
-                    <Route path="/pending_scholarship_list" element={ <PendingList /> } /> 
-                    <Route path="/apply_scholarship" element={ <ApplyScholarship /> } /> 
-                    <Route path="/single_apply_scholarship" element={ <SingleAppliedScholarship /> } /> 
+                        <Route path="/head/scholarship_list" element={ <HeadScholarshipList /> } />
+                        <Route path="/head/single_scholarship" element={ <HeadSingleScholarship/> } />
+                        <Route path="/head/applied_scholarship_list" element={ <HeadAppliedScholarshipList /> } />
+                        <Route path="/head/single_apply_scholarship" element={ <HeadSingleAppliedScholarship /> } /> 
+                        <Route path="/head/update_scholarship_state" element={ <HeadUpdateState /> } />
+                        <Route path="/head/scholarship_state_list" element={ <HeadStateList /> } />
+                        <Route path="/head/pending_scholarship_list" element={ <HeadPendingList /> } />  
+                        
+                        <Route path="/advisor/scholarship_list" element={ <AdvisorScholarshipList /> } />
+                        <Route path="/advisor/single_scholarship" element={ <AdvisorSingleScholarship/> } />
+                        <Route path="/advisor/applied_scholarship_list" element={ <AdvisorAppliedScholarshipList /> } />
+                        <Route path="/advisor/single_apply_scholarship" element={ <AdvisorSingleAppliedScholarship /> } /> 
+                        <Route path="/advisor/scholarship_state_list" element={ <AdvisorStateList /> } />
+                        <Route path="/advisor/update_scholarship_state" element={ <AdvisorUpdateState/> } />
+                        <Route path="/advisor/pending_scholarship_list" element={ <AdvisorPendingList /> } /> 
 
-                    <Route path="/scholarship_state_list" element={ <StateList /> } />
-                    <Route path="/update_scholarship_state" element={ <UpdateState/> } />
+                        <Route path="/student/scholarship_list" element={ <StudentScholarshipList /> } />
+                        <Route path="/student/single_scholarship" element={ <StudentSingleScholarship/> } />
+                        <Route path="/student/apply_scholarship" element={ <ApplyScholarship /> } /> 
+                        <Route path="/student/applied_scholarship_list" element={ <StudentAppliedScholarshipList /> } />
+                        <Route path="/student/single_apply_scholarship" element={ <StudentSingleAppliedScholarship /> } /> 
+                        <Route path="/student/scholarship_state_list" element={ <StudentStateList /> } /> 
+                        <Route path="/student/pending_scholarship_list" element={ <StudentPendingList /> } /> 
                     
                 </Routes>
                 

@@ -21,7 +21,7 @@ const Sidebar = () => {
     const location = useLocation();
 
     const [loggedInName, setLoggedInName] = useState("");
-
+    
 
     useEffect(() => {
         const name= localStorage.getItem('username');
@@ -45,10 +45,11 @@ const Sidebar = () => {
       <hr />
       <div className='navigationUpper'>
       <Navigation
+            
             activeItemId={location.pathname}
             onSelect={({ itemId }) => {
               // go to that location
-              navigate(itemId);
+              if(itemId != undefined) navigate(itemId);
             }}
             items={[
               {
@@ -86,33 +87,68 @@ const Sidebar = () => {
               },
               {
                   title: "Payment",
-                  itemId: "/singlecard?student_id=" + loggedInName,
+                  //itemId: "/student/card?student_id=" + loggedInName,
                   elemBefore: () => <GrMoney />,
                   // Optional
                   subNav: [
                     {
                       title: "Smart Card",
-                      itemId: "../singlecard?student_id=" + loggedInName,
+                      itemId: "/student/card/singlecard?student_id=" + loggedInName,
                       // Optional
                       elemBefore: () => <TbSchool />,
                     },
                     {
                       title: "Payment History",
-                      itemId: "../payment_list?type=single&student_id=" + loggedInName,
+                      itemId: "/student/card/payment_list?type=single&student_id=" + loggedInName,
                       // Optional
                       elemBefore: () => <TbSchool />,
                     },
                     {
                       title: "Transaction History",
-                      itemId: "../transaction_list?type=single&student_id=" + loggedInName,
+                      itemId: "/student/card/transaction_list?type=single&student_id=" + loggedInName,
                       // Optional
                       elemBefore: () => <TbSchool />,
                     },
                   ]
-
-                  
-              },
-              
+              }             
+            ]}
+            />
+            <Navigation
+            
+            activeItemId={location.pathname}
+            onSelect={({ itemId }) => {
+              // go to that location
+              if(itemId != undefined) navigate(itemId);
+            }}
+            items={[
+              {
+                title: "Scholarship",
+                //itemId: "/student/card?student_id=" + loggedInName,
+                elemBefore: () => <GrMoney />,
+                // Optional
+                subNav: [
+                  {
+                    title: "Scholarship List",
+                    itemId: "/student/scholarship_list",
+                    elemBefore: () => <CgList />,
+                  },
+                  {
+                    title: "Apply Scholarship",
+                    itemId: "/student/apply_scholarship",
+                    elemBefore: () => <CgList />,
+                  },
+                  {
+                      title: "Applied Scholarship List",
+                      itemId: "/student/applied_scholarship_list",
+                      elemBefore: () => <CgList />,
+                  },
+                  {
+                      title: "Pending Scholarship List",
+                      itemId: "/student/pending_scholarship_list",
+                      elemBefore: () => <CgList />,
+                  }
+                ]   
+              }              
             ]}
             />
       </div>

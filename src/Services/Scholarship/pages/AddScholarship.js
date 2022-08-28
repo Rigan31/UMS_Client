@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
 const AddScholarship= () => {
@@ -18,7 +19,7 @@ const AddScholarship= () => {
     let navigate = useNavigate(); 
 
     const routeChangeToProfile = (name) =>{ 
-        const url = `../single_scholarship?name=${name}`;
+        const url = `../financial_admin/single_scholarship?name=${name}`;
         navigate(url);
     }
 
@@ -91,16 +92,15 @@ const AddScholarship= () => {
 
     return (
         <div>
-        <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
+        <SidebarFinancialAdmin />
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
                     Add Scholarship 
-                </div>
-
-                <div className='scholarshipDetails'>
-                    <div className='scholarshipDetailsTitle'>
-                        Insert Scholarship Data
-                    </div>
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                <div className='transactionDetailsNew'>
+                    
                     <div className='detailsForm'>
 
                     
@@ -131,6 +131,7 @@ const AddScholarship= () => {
                                 }
                                 
                                 <span>&nbsp;</span>
+                                <br />
                                 <Button variant="primary" onClick={(e)=> addLevelField(e)}>
                                     Add
                                 </Button>

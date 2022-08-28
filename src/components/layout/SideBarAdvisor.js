@@ -24,7 +24,7 @@ const SideBarAdvisor= () => {
       <div className='title'>
         <h1>UMS</h1>
         <div className='whoosePortal'>
-          <h4>Head</h4>
+          <h4>Advisor</h4>
         </div>
       
       </div>
@@ -34,7 +34,7 @@ const SideBarAdvisor= () => {
             activeItemId={location.pathname}
             onSelect={({ itemId }) => {
               // go to that location
-              navigate(itemId);
+              if(itemId != undefined) navigate(itemId);
             }}
             items={[
               {
@@ -50,7 +50,29 @@ const SideBarAdvisor= () => {
                 elemBefore: () => <CgProfile/>,
                 
               },
-              
+              {
+                title: "Scholarship",
+                //itemId: "/student/card?student_id=" + loggedInName,
+                elemBefore: () => <GrMoney />,
+                // Optional
+                subNav: [
+                  {
+                    title: "Scholarship List",
+                    itemId: "/advisor/scholarship_list",
+                    elemBefore: () => <CgList />,
+                  },
+                  {
+                      title: "Applied Scholarship List",
+                      itemId: "/advisor/applied_scholarship_list",
+                      elemBefore: () => <CgList />,
+                  },
+                  {
+                      title: "Pending Scholarship List",
+                      itemId: "/advisor/pending_scholarship_list",
+                      elemBefore: () => <CgList />,
+                  }
+                ]   
+              }
             ]}
             />
       </div>

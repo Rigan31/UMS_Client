@@ -11,7 +11,7 @@ import Row from 'react-bootstrap/Row';
 import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
-const ScholarshipList = () => {
+const StudentScholarshipList = () => {
 
     const url = "http://localhost:5023/scholarship/scholarship_list"; 
     
@@ -80,7 +80,7 @@ const ScholarshipList = () => {
 
     return (
         <div>
-        <SidebarFinancialAdmin />
+        <Sidebar />
         <div className='containerTitle'>
             <div className='pageTitleNew'>
                     Scholarship List
@@ -111,10 +111,6 @@ const ScholarshipList = () => {
                             Sort &darr;
                         </Button>
                         <span>&nbsp; &nbsp;</span>
-
-                        <Button variant="primary">
-                            <a href={`add_scholarship`} style={{color:'white'}}>Add</a>
-                        </Button>
                     </div>
                     <div className='detailsForm'>
                     
@@ -152,4 +148,4 @@ const ScholarshipList = () => {
     )
 }
 
-export default ScholarshipList
+export default StudentScholarshipList

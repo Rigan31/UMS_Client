@@ -34,7 +34,7 @@ const SidebarHead= () => {
             activeItemId={location.pathname}
             onSelect={({ itemId }) => {
               // go to that location
-              navigate(itemId);
+              if(itemId != undefined) navigate(itemId);
             }}
             items={[
               {
@@ -64,20 +64,35 @@ const SidebarHead= () => {
                   
               },
               {
-                  title: "Course Registration",
-                  itemId: "/scholarship",
-                  // Optional
-                  elemBefore: () => <TbSchool />,
-                  
-              },
-              {
                   title: "Feedback",
                   itemId: "/head/show_feedbacks",
                   // Optional
                   elemBefore: () => <GrMoney />,
                   
               },
-              
+              {
+                title: "Scholarship",
+                //itemId: "/student/card?student_id=" + loggedInName,
+                elemBefore: () => <GrMoney />,
+                // Optional
+                subNav: [
+                  {
+                    title: "Scholarship List",
+                    itemId: "/head/scholarship_list",
+                    elemBefore: () => <CgList />,
+                  },
+                  {
+                      title: "Applied Scholarship List",
+                      itemId: "/head/applied_scholarship_list",
+                      elemBefore: () => <CgList />,
+                  },
+                  {
+                      title: "Pending Scholarship List",
+                      itemId: "/head/pending_scholarship_list",
+                      elemBefore: () => <CgList />,
+                  }
+                ]   
+              }
             ]}
             />
       </div>

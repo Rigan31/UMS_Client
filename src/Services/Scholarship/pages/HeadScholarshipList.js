@@ -9,9 +9,10 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
+import SidebarHead from '../../../components/layout/SideBarHead';
 
 
-const ScholarshipList = () => {
+const HeadScholarshipList = () => {
 
     const url = "http://localhost:5023/scholarship/scholarship_list"; 
     
@@ -80,7 +81,7 @@ const ScholarshipList = () => {
 
     return (
         <div>
-        <SidebarFinancialAdmin />
+        <SidebarHead />
         <div className='containerTitle'>
             <div className='pageTitleNew'>
                     Scholarship List
@@ -111,10 +112,6 @@ const ScholarshipList = () => {
                             Sort &darr;
                         </Button>
                         <span>&nbsp; &nbsp;</span>
-
-                        <Button variant="primary">
-                            <a href={`add_scholarship`} style={{color:'white'}}>Add</a>
-                        </Button>
                     </div>
                     <div className='detailsForm'>
                     
@@ -152,4 +149,4 @@ const ScholarshipList = () => {
     )
 }
 
-export default ScholarshipList
+export default HeadScholarshipList

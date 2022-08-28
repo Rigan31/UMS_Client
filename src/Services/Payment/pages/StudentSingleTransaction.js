@@ -16,7 +16,7 @@ const StudentSingleTransaction= () => {
 
     const query = new URLSearchParams(useLocation().search);
 
-    const std_id = query.get("student_id");
+    const std_id = localStorage.getItem("username");
     const id = query.get("id");
 
     const url = "http://localhost:5022/payment/transaction?student_id=" + std_id + "&id=" + id; 
@@ -46,16 +46,14 @@ const StudentSingleTransaction= () => {
 
     return (
         <div>
-        <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
+        <SidebarFinancialAdmin />
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
                     Transaction Data
-                </div>
-
-                <div className='transactionDetails'>
-                    <div className='cardDetailsTitle'>
-                        Transaction Data
-                    </div>
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                <div className='transactionDetailsNew'>
                     <div className='detailsForm'>
 
                     { backendData.map(transaction => {

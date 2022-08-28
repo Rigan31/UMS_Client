@@ -10,17 +10,17 @@ import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
 import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
+import SidebarHead from '../../../components/layout/SideBarHead';
 
 
-const SingleAppliedScholarship= () => {
+const HeadSingleAppliedScholarship= () => {
 
     const query = new URLSearchParams(useLocation().search);
     const schol_name = query.get("name");
     const std_id = query.get("student_id");
     const sess = query.get("session");
     
-    const url = "http://localhost:5023/scholarship/applied_scholarship?session="+sess+"&student_id="+std_id+"&name="+schol_name; 
-    const postUrl = "http://localhost:5023/scholarship/update_applied_scholarship"; 
+    const url = "http://localhost:5023/scholarship/applied_scholarship?session="+sess+"&student_id="+std_id+"&name="+schol_name;
 
     const [backendData, setBackendData] = useState([]);
 
@@ -60,41 +60,13 @@ const SingleAppliedScholarship= () => {
 
 
 
-
-
-
-
-    function submit(e){
-        e.preventDefault();
-
-        let postData = {};
-        postData.id = data.id;
-        postData.student_id = data.student_id;
-        postData.session = data.session_id;
-        postData.amount = data.amount;        
-
-        Axios.patch(postUrl, postData)
-        .then(res=>{
-            if(res.data.status == "success") {
-                alert('Successfully edited');
-            }
-            else{
-                alert('Data is invaild');
-            } 
-            window.location.reload(false);
-        })
-    }
-
     function handle(e){
-        const newData = {...data}
-        newData[e.target.id] = e.target.value
-        setData(newData);
     }
     
 
     return (
         <div>
-        <SidebarFinancialAdmin />
+        <SidebarHead />
         <div className='containerTitle'>
             <div className='pageTitleNew'>
                     Applied Scholarship 
@@ -107,7 +79,7 @@ const SingleAppliedScholarship= () => {
 
                     { backendData.map(scholarship => {
                             return(
-                    <Form onSubmit={(e)=> submit(e)}>
+                    <Form >
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridAddress1">
@@ -134,7 +106,7 @@ const SingleAppliedScholarship= () => {
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label>Amount</Form.Label>
                                 <Form.Control type="text" id="amount" defaultValue={scholarship.amount} onChange={(e)=> handle(e)} 
-                                    disabled={scholarship.current_state.location != 'Applied'}/>
+                                    disabled/>
                             </Form.Group> 
                         </Row>
 
@@ -171,22 +143,12 @@ const SingleAppliedScholarship= () => {
                         </Row>
 
                         <Row>
-                            {
-                                scholarship.current_state.location == 'Applied' ?
-                                
-                                    <Button variant="primary" type="submit">
-                                        Save
-                                    </Button>
-                                :   <p></p>
-                            
-                            }
-                            <span>&nbsp; &nbsp;</span>
                             <Button variant="primary">
                                 <a href={`scholarship_state_list?type=single&applied_id=${data.id}&session=${sess}&student_id=${std_id}&name=${schol_name}`} style={{color:'white'}}>All States</a>
                             </Button>
                             <span>&nbsp; &nbsp;</span>
                             {
-                                scholarship.current_state.location != 'Accepted' && scholarship.current_state.location != 'Rejected' ?
+                                scholarship.current_state.location == 'Hall' ?
                                     <Button variant="primary">
                                         <a href={`update_scholarship_state?student_id=${std_id}&session_id=${sess}&applied_id=${data.id}&name=${schol_name}`} style={{color:'white'}}>Update State</a>
                                     </Button>
@@ -212,4 +174,4 @@ const SingleAppliedScholarship= () => {
     )
 }
 
-export default SingleAppliedScholarship
+export default HeadSingleAppliedScholarship

@@ -60,15 +60,13 @@ const AddPayment = () => {
     return (
         <div>
        <SidebarFinancialAdmin />
-        <div className='rightSide'>
-                <div className='pageTitle'>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
                     Add New Due Payment
-                </div>
-
-                <div className='paymentDetails'>
-                    <div className='paymentDetailsTitle'>
-                        Payment Details
-                    </div>
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                <div className='transactionDetailsNew'>
                     <div className='detailsForm'>
                         <Form onSubmit={(e)=> submit(e)}>
 

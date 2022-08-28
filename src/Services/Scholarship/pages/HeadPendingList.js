@@ -1,5 +1,5 @@
 import React, { useEffect,  useState } from 'react'
-import '../assets/css/AppliedScholarshipList.css'
+import '../assets/css/PendingList.css'
 import Sidebar from '../../../components/layout/Sidebar.js'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
@@ -10,16 +10,21 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useLocation, useParams, Link } from "react-router-dom";
 import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
+import SideBarAdvisor from '../../../components/layout/SideBarAdvisor';
+import SidebarHead from '../../../components/layout/SideBarHead';
 
 
-const AppliedScholarshipList = () => {
+const HeadPendingList = () => {
 
     const query = new URLSearchParams(useLocation().search);
     const schol_name = query.get("name");
     const std_id = query.get("student_id");
     const sess = query.get("session");
+    const state = query.get("state");
 
-    const url = "http://localhost:5023/scholarship/applied_scholarship_list"; 
+    const options = [ '...', 'Applied', 'Advisor', 'Hall', 'Head', 'Accepted', 'Rejected' ];
+
+    const url = "http://localhost:5023/scholarship/pending_scholarship_list"; 
     
     const [backendData, setBackendData] = useState([]);
     const [search, setSearch] = useState(() => {
@@ -34,6 +39,9 @@ const AppliedScholarshipList = () => {
         
         if(schol_name != null) ret.name = schol_name;
         else ret.name = "";
+        
+        if(state != null) ret.state = state;
+        else ret.state = "...";
 
         return ret;
     });
@@ -76,6 +84,11 @@ const AppliedScholarshipList = () => {
             started = true;
             url_p += "name="+search.name;
         }
+        if(search.state != "...") {
+            if(started) url_p += "&";
+            started = true;
+            url_p += "state="+search.state;
+        }
         return url_p;
     }
 
@@ -114,10 +127,10 @@ const AppliedScholarshipList = () => {
 
     return (
         <div>
-        <SidebarFinancialAdmin />
+        <SidebarHead />
         <div className='containerTitle'>
             <div className='pageTitleNew'>
-                    Applied Scholarship List
+                    Pending Scholarship List
             </div>
         </div>
         <div className='rightSideAddCourse'>
@@ -138,6 +151,21 @@ const AppliedScholarshipList = () => {
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label><h5>Search Scholarship Name</h5></Form.Label>
                                     <Form.Control type="text" id="name" defaultValue={search.name} onChange={(e)=> handle(e)} />
+                            </Form.Group> 
+                        </Row>
+                        <br />
+                        <Row>
+                            <Form.Group as={Col} controlId="formGridAddress1">
+                                <Form.Label><h5>Select State</h5></Form.Label>
+                                    <Form.Control as="select" id="state" defaultValue={search.state} onChange={(e)=> handle(e)}>
+                                    {
+                                        options.map((option) => {
+                                            return(
+                                                <option value={option}>{option}</option>
+                                            )
+                                        })
+                                    }
+                                    </Form.Control>
                             </Form.Group> 
                         </Row>
                         <br />
@@ -166,7 +194,6 @@ const AppliedScholarshipList = () => {
                                 <Card.Body className='cardBodyChange'>
                                     <Card.Title>{scholarship.student_id} applied {scholarship.scholarship_name}</Card.Title>
                                     <Card.Text>
-                                        <p>Scholarship Id: {scholarship.id}</p>
                                         <p>Student Id: {scholarship.student_id}</p>
                                         <p>Session Id: {scholarship.session_id}</p>
                                         <p>Scholarship Name: {scholarship.scholarship_name}</p>
@@ -195,4 +222,4 @@ const AppliedScholarshipList = () => {
     )
 }
 
-export default AppliedScholarshipList
+export default HeadPendingList

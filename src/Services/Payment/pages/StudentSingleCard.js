@@ -16,7 +16,7 @@ const StudentSingleCard= () => {
 
     const query = new URLSearchParams(useLocation().search);
 
-    const std_id = query.get("student_id");
+    const std_id = localStorage.getItem("username");
     const card_no = query.get("card_no");
 
     const url = "http://localhost:5022/payment/smart_card?student_id=" + std_id; 
@@ -81,15 +81,13 @@ const StudentSingleCard= () => {
     return (
         <div>
         <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
                     Card Data
-                </div>
-
-                <div className='cardDetails'>
-                    <div className='cardDetailsTitle'>
-                        Card Data
-                    </div>
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                <div className='transactionDetailsNew'>
                     <div className='detailsForm'>
 
                     { backendData.map(card => {

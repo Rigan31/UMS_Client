@@ -47,15 +47,13 @@ const SingleTransaction= () => {
     return (
         <div>
         <SidebarFinancialAdmin />
-        <div className='rightSide'>
-                <div className='pageTitle'>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
                     Transaction Data
-                </div>
-
-                <div className='transactionDetails'>
-                    <div className='cardDetailsTitle'>
-                        Transaction Data
-                    </div>
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                <div className='transactionDetailsNew'>
                     <div className='detailsForm'>
 
                     { backendData.map(transaction => {

@@ -11,7 +11,7 @@ const StudentPaymentList = () => {
 
     const query = new URLSearchParams(useLocation().search);
     let type = query.get("type");
-    let std_id = query.get("student_id");
+    let std_id = localStorage.getItem("username");
 
     if(type == null) type = "all";
 
@@ -47,19 +47,19 @@ const StudentPaymentList = () => {
     return (
         <div>
         <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    {title}
-                </div>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                {title}
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>                
 
-                <div className='paymentDetails'>
+                <div className='paymentDetailsNew'>
                     <div className='detailsForm'>
-                    
-
                         { backendData.map(payment => {
                             return(
-                                <Card className='singlePayment'>
-                                <Card.Body >
+                                <Card className='singleCourseNew' style={{marginBottom:'20px'}}>
+                                <Card.Body className='cardBodyChange'>
                                     <Card.Title>{payment.student_id}</Card.Title>
                                     <Card.Text>
                                         <p>Amount: {payment.amount}</p>
@@ -72,9 +72,6 @@ const StudentPaymentList = () => {
                                     <Card.Link href={`singlepayment?student_id=${payment.student_id}&id=${payment.id}`}>
                                         Go to payment
                                     </Card.Link>
-                                    {/* <Card.Link href={`singlepayment?student_id=${payment.student_id}&id=${payment.id}`}>
-                                        Go to payment
-                                    </Card.Link> */}
                                 </Card.Body>
                                 </Card>
                             )

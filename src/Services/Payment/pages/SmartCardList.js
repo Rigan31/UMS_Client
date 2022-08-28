@@ -39,22 +39,18 @@ const SmartCardList = () => {
     return (
         <div>
         <SidebarFinancialAdmin />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    Smart Card List
-                </div>
-
-                <div className='cardDetails'>
-                    <div className='cardDetailsTitle'>
-                        {tableName}
-                    </div>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                Smart Card List
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                <div className='paymentDetailsNew'>
                     <div className='detailsForm'>
-                    
-
                         { backendData.map(card => {
                             return(
-                                <Card className='singleCard'>
-                                <Card.Body >
+                                <Card className='singleCourseNew' style={{marginBottom:'20px'}}>
+                                <Card.Body className='cardBodyChange'>
                                     <Card.Title>{card.student_id}</Card.Title>
                                     <Card.Text>
                                         <p>Card no: {card.card_no}</p>

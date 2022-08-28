@@ -1,5 +1,5 @@
 import React, { useEffect,  useState } from 'react'
-import '../assets/css/ApplyScholarship.css'
+import '../assets/css/UpdateState.css'
 import Sidebar from '../../../components/layout/Sidebar.js'
 import Axios from 'axios';
 import Card from 'react-bootstrap/Card';
@@ -10,42 +10,49 @@ import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
 import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
+import SidebarHead from '../../../components/layout/SideBarHead';
 
 
-const ApplyScholarship= () => {
+const HeadUpdateState= () => {
 
-    const url = "http://localhost:5023/scholarship/apply_scholarship"; 
+    const query = new URLSearchParams(useLocation().search);
+    const schol_name = query.get("name");
+    const std_id = query.get("student_id");
+    const applied_id = query.get("applied_id");
+    const sess = query.get("session_id");
+
+    const url = "http://localhost:5023/scholarship/update_apply_state"; 
 
     let navigate = useNavigate(); 
-    const query = new URLSearchParams(useLocation().search);
 
     const routeChangeToProfile = () =>{ 
-        const url = `../student/single_apply_scholarship?name=${data.scholarship_name}&student_id=${data.student_id}&session=${data.session_id}`;
+        const url = `../head/single_apply_scholarship?name=${schol_name}&student_id=${std_id}&session=${sess}`;
         navigate(url);
     }
 
     const [data, setData] = useState({
-        scholarship_name: query.get("name"),
-        student_id: localStorage.getItem("username"),
-        session_id: 0,
-        level_term: "0-0"
+        student_id: std_id,
+        session_id: sess,
+        applied_id: applied_id,
+        state: "",
+        updated_by: ""
     });
 
 
 
 
 
-
-
     function handle(e){
-        const newData = {...data};
-        newData[e.target.id] = e.target.value;
+        const newData = {...data}
+        newData[e.target.id] = e.target.value
         setData(newData);
     }
 
     function submit(e){
         e.preventDefault();
-
+        console.log("Ekhon submit dibe!");
+        console.log("Data ", data);
+        
         Axios.post(url, data)
         .then(res=>{
             if(res.data.status == "success") {
@@ -59,13 +66,12 @@ const ApplyScholarship= () => {
 
     
 
-
     return (
         <div>
-        <Sidebar />
+        <SidebarHead />
         <div className='containerTitle'>
             <div className='pageTitleNew'>
-                    Apply Scholarship 
+                    Add Scholarship State
             </div>
         </div>
         <div className='rightSideAddCourse'>
@@ -78,39 +84,49 @@ const ApplyScholarship= () => {
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridAddress1">
-                                <Form.Label>Scholarship name</Form.Label>
-                                <Form.Control type="text" id="scholarship_name" defaultValue={data.scholarship_name} onChange={(e)=> handle(e)} />
+                                <Form.Label>Scholarship Name</Form.Label>
+                                <Form.Control type="text" id="name" defaultValue={schol_name}  disabled/>
                             </Form.Group>
                         </Row>
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label>Student Id</Form.Label>
-                                <Form.Control type="text" id="student_id" defaultValue={data.student_id} onChange={(e)=> handle(e)} disabled/>
+                                <Form.Control type="text" id="student_id" defaultValue={data.student_id}  disabled/>
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridAddress1">
+                                <Form.Label>Session Id</Form.Label>
+                                <Form.Control type="text" id="session_id" defaultValue={data.session_id} disabled/>
                             </Form.Group> 
                         </Row>
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridAddress1">
-                                <Form.Label>Session id</Form.Label>
-                                <Form.Control type="text" id="session_id" defaultValue={data.session_id} onChange={(e)=> handle(e)} />
+                                <Form.Label>Applied Id</Form.Label>
+                                <Form.Control type="text" id="applied_id" defaultValue={data.applied_id} disabled/>
+                            </Form.Group> 
+                        </Row>
+                        
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridAddress1">
+                                <Form.Label>New State</Form.Label>
+                                <Form.Control type="text" id="state" defaultValue={data.state} onChange={(e)=> handle(e)}/>
                             </Form.Group> 
                         </Row>
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridAddress1">
-                                <Form.Label>Level-term</Form.Label>
-                                <Form.Control type="text" id="level_term" defaultValue={data.level_term} onChange={(e)=> handle(e)} />
+                                <Form.Label>Updated By</Form.Label>
+                                <Form.Control type="text" id="updated_by" defaultValue={data.updated_by} onChange={(e)=> handle(e)}/>
                             </Form.Group> 
                         </Row>
 
                         <Row>
                             <Button variant="primary" type="submit">
                                 Submit
-                            </Button>
-                            <span>&nbsp; &nbsp;</span>
-                            <Button variant="primary" type="submit">
-                                <a href={`single_scholarship?name=${data.scholarship_name}`} style={{color:'white'}}>Go Back</a>
                             </Button>
                         </Row>
                         </Form>
@@ -124,4 +140,4 @@ const ApplyScholarship= () => {
     )
 }
 
-export default ApplyScholarship
+export default HeadUpdateState

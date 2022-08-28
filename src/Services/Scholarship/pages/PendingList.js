@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useLocation, useParams, Link } from "react-router-dom";
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
 const PendingList = () => {
@@ -19,7 +20,7 @@ const PendingList = () => {
     const sess = query.get("session");
     const state = query.get("state");
 
-    const options = [ 'Applied', 'Advisor', 'Hall', 'Head', 'Accepted', 'Rejected' ];
+    const options = [ '...', 'Applied', 'Advisor', 'Hall', 'Head', 'Accepted', 'Rejected' ];
 
     const url = "http://localhost:5023/scholarship/pending_scholarship_list"; 
     
@@ -38,7 +39,7 @@ const PendingList = () => {
         else ret.name = "";
         
         if(state != null) ret.state = state;
-        else ret.state = "Applied";
+        else ret.state = "...";
 
         return ret;
     });
@@ -81,7 +82,7 @@ const PendingList = () => {
             started = true;
             url_p += "name="+search.name;
         }
-        if(search.state != "") {
+        if(search.state != "...") {
             if(started) url_p += "&";
             started = true;
             url_p += "state="+search.state;
@@ -124,16 +125,15 @@ const PendingList = () => {
 
     return (
         <div>
-        <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
+        <SidebarFinancialAdmin />
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
                     Pending Scholarship List
-                </div>
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
 
-                <div className='scholarshipDetails'>
-                    <div className='scholarshipDetailsTitle'>
-                        Pending Scholarships
-                    </div>
+                <div className='transactionDetailsNew'>
                     <div>
                         <br /> <br />
 
@@ -188,10 +188,10 @@ const PendingList = () => {
                     
                         { backendData.map(scholarship => {
                             return(
-                                <Card className='singleScholarship'>
-                                <Card.Body >
+                                <Card className='singleCourseNew' style={{marginBottom:'20px'}}>
+                                <Card.Body className='cardBodyChange'>
+                                    <Card.Title>{scholarship.student_id} applied {scholarship.scholarship_name}</Card.Title>
                                     <Card.Text>
-                                        <p>Scholarship Id: {scholarship.id}</p>
                                         <p>Student Id: {scholarship.student_id}</p>
                                         <p>Session Id: {scholarship.session_id}</p>
                                         <p>Scholarship Name: {scholarship.scholarship_name}</p>

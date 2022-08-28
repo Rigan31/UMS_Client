@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
+import SidebarFinancialAdmin from '../../../components/layout/SidebarFinancialAdmin';
 
 
 const UpdateState= () => {
@@ -24,7 +25,7 @@ const UpdateState= () => {
     let navigate = useNavigate(); 
 
     const routeChangeToProfile = () =>{ 
-        const url = `../single_apply_scholarship?name=${schol_name}&student_id=${std_id}&session=${sess}`;
+        const url = `../financial_admin/single_apply_scholarship?name=${schol_name}&student_id=${std_id}&session=${sess}`;
         navigate(url);
     }
 
@@ -66,16 +67,15 @@ const UpdateState= () => {
 
     return (
         <div>
-        <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
+        <SidebarFinancialAdmin />
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
                     Add Scholarship State
-                </div>
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
 
-                <div className='scholarshipDetails'>
-                    <div className='scholarshipDetailsTitle'>
-                        Insert State Data
-                    </div>
+                <div className='transactionDetailsNew'>
                     <div className='detailsForm'>
 
                     

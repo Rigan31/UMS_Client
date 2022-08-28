@@ -79,12 +79,7 @@ const AddTransaction = () => {
             </div>
         </div>
         <div className='rightSideAddCourse'>
-               
-
-                <div className='paymentDetails'>
-                    <div className='transactionDetailsTitle'>
-                        Transaction Details
-                    </div>
+                <div className='transactionDetailsNew'>
                     <div className='detailsForm'>
                         <Form onSubmit={(e)=> submit(e)}>
 

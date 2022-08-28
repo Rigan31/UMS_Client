@@ -58,7 +58,7 @@ const TransactionList = () => {
                     <div className='detailsForm'>
                         { backendData.map(transaction => {
                             return(
-                                <Card className='singleCourseNew'>
+                                <Card className='singleCourseNew' style={{marginBottom:'20px'}}>
                                 <Card.Body className='cardBodyChange'>
                                     <Card.Title>{transaction.student_id}</Card.Title>
                                     <Card.Text>

@@ -47,19 +47,19 @@ const PaymentList = () => {
     return (
         <div>
         <SidebarFinancialAdmin />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    {title}
-                </div>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                {title}
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>                
 
-                <div className='paymentDetails'>
+                <div className='paymentDetailsNew'>
                     <div className='detailsForm'>
-                    
-
                         { backendData.map(payment => {
                             return(
-                                <Card className='singlePayment'>
-                                <Card.Body >
+                                <Card className='singleCourseNew' style={{marginBottom:'20px'}}>
+                                <Card.Body className='cardBodyChange'>
                                     <Card.Title>{payment.student_id}</Card.Title>
                                     <Card.Text>
                                         <p>Amount: {payment.amount}</p>

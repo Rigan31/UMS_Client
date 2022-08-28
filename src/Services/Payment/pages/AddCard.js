@@ -58,15 +58,13 @@ const AddCard = () => {
     return (
         <div>
         <SidebarFinancialAdmin />
-        <div className='rightSide'>
-                <div className='pageTitle'>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
                     Add New Smart Card
-                </div>
-
-                <div className='cardDetails'>
-                    <div className='cardDetailsTitle'>
-                        Card Details
-                    </div>
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                <div className='transactionDetailsNew'>
                     <div className='detailsForm'>
                         <Form onSubmit={(e)=> submit(e)}>
 

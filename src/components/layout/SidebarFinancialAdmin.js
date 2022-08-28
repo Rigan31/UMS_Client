@@ -35,7 +35,7 @@ const SidebarFinancialAdmin = () => {
             activeItemId={location.pathname}
             onSelect={({ itemId }) => {
               // go to that location
-              navigate(itemId);
+              if(itemId != undefined) navigate(itemId);
             }}
             items={[
               {
@@ -81,6 +81,37 @@ const SidebarFinancialAdmin = () => {
               },
             ]}
           />
+          <hr />
+          <Navigation
+          activeItemId={location.pathname}
+          onSelect={({ itemId }) => {
+            // go to that location
+            if(itemId != undefined) navigate(itemId);
+          }}
+          items={[
+            
+            {
+                title: "Scholarship List",
+                itemId: "/financial_admin/scholarship_list",
+                elemBefore: () => <CgList />,
+            },
+            {
+                title: "Add Scholarship",
+                itemId: "/financial_admin/add_scholarship",
+                elemBefore: () => <CgLogOut />,
+            },
+            {
+                title: "Applied Scholarship List",
+                itemId: "/financial_admin/applied_scholarship_list",
+                elemBefore: () => <CgList />,
+            },
+            {
+                title: "Pending Scholarship List",
+                itemId: "/financial_admin/pending_scholarship_list",
+                elemBefore: () => <CgList />,
+            }
+          ]}
+        />
         </div>
       <hr />
             
