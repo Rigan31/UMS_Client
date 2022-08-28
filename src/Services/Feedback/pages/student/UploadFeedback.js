@@ -15,7 +15,7 @@ export default function UploadFeedback() {
     }
     const upload_feedback = (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:5010/upload_feedback", {
+        Axios.post("http://localhost:5013/upload_feedback", {
             student_id: student_id,
             subject: subject,
             desc: desc,

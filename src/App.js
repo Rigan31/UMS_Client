@@ -131,6 +131,8 @@ export default function App() {
                     
                     <Route path='/student_pending_register' element={ <PendingCourseReg />} />
                     <Route path='/advisor/course_registration/student/:student_id' element={ <AdvisorPendingCourseReg />} />
+
+                    
                     
                     
                     

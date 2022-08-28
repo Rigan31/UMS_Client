@@ -7,7 +7,7 @@ import SidebarHead from '../../../../components/layout/SideBarHead';
 export default function ShowFeedbacks() {
     const [backendData, setBackendData] = useState("")
     useEffect(() => {
-        fetch("http://localhost:5010/get_feedbacks").then(
+        fetch("http://localhost:5013/get_feedbacks").then(
         response => response.json()
         ).then(
         data => {
