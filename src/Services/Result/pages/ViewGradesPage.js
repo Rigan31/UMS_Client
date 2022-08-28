@@ -7,14 +7,19 @@ import Button from 'react-bootstrap/esm/Button';
 
 export default function ViewGradesPage() {
     const [result, setResult] = useState([])
-    const student_id = '1705031'
+    const [level, setLevel] = useState([]);
+    const [term, setTerm] = useState([]);
+    const [cgpa, setCgpa] = useState(0.0);
+    //const student_id = '1705031'
     
     
     function getResult(){
-        const url = "http://localhost:5004/getresult?student_id=" + student_id
+        const student_id = localStorage.getItem("username");
+        const url = "http://localhost:5004/getresult?student_id=" + student_id + "&level=" + level + "&term=" + term;
         Axios.get(url)
         .then(res=>{
-            setResult(res.data.data)
+            setResult(res.data.data);
+            setCgpa(res.data.cgpa);
         })
     }
     
@@ -25,7 +30,7 @@ export default function ViewGradesPage() {
                 <h1 class="display-4" align="center">Result</h1>
                 <hr class="my-4" />
                 <p>     
-                Level : <select name="level" class="btn btn-secondary dropdown-toggle">
+                Level : <select name="level" onChange={e => setLevel(e.target.value)} class="btn btn-secondary dropdown-toggle">
                     <option selected>Select Level</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -33,7 +38,7 @@ export default function ViewGradesPage() {
                     <option value="4">4</option>
                 </select>
                 <br/> <br/>
-                Term : <select name="term" class="btn btn-secondary dropdown-toggle">
+                Term : <select name="term" onChange={e => setTerm(e.target.value)} class="btn btn-secondary dropdown-toggle">
                     <option selected>Select Term</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -65,6 +70,7 @@ export default function ViewGradesPage() {
 
                 </tbody>
                 </table>
+                <h6>Total GPA : {cgpa}</h6>
         </div>
     )
 }

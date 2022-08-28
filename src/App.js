@@ -100,6 +100,12 @@ import HeadPendingList from './Services/Scholarship/pages/HeadPendingList'
 import StudentPendingList from './Services/Scholarship/pages/StudentPendingList'
 
 
+import PendingCourseReg from './Services/Course/pages/PendingCourseReg'
+import AdvisorPendingCourseReg from './Services/Course/pages/AdvisorPendingCourseReg'
+
+
+
+
 
 
 export default function App() {
@@ -123,6 +129,8 @@ export default function App() {
                     <Route path="/show_result" element={ <ShowResultPage/> } />
                     <Route path="/student_register" element={ <StudentRegister/> } />
                     
+                    <Route path='/student_pending_register' element={ <PendingCourseReg />} />
+                    <Route path='/advisor/course_registration/student/:student_id' element={ <AdvisorPendingCourseReg />} />
                     
                     
                     

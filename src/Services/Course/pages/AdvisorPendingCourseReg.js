@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import '../assets/css/StudentRegister.css'
+import '../assets/css/StudentRegister.css'
 import Sidebar from '../../../components/layout/Sidebar'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
@@ -9,9 +9,10 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import SidebarHead from '../../../components/layout/SideBarHead';
 import SideBarAdvisor from '../../../components/layout/SideBarAdvisor';
+import { useParams } from 'react-router-dom';
 
-const SeeStudentProfile = () => {
-
+const AdvisorPendingCourseReg = () => {
+    const { student_id } = useParams();
     
 
     let navigate = useNavigate(); 
@@ -19,14 +20,11 @@ const SeeStudentProfile = () => {
         // console.log("course_id: ", course_id);
         // const url = `singlecourse/${course_id}`;
         // console.log("url: ", url);  
-        navigate('/head/showofferlist');
+        navigate('/advisor/course_registration');
     }
 
     const [backendData, setBackendData] = useState([{
 
-    }]);
-
-    const [backendDataAccepted, setBackendDataAccepted] = useState([{
     }]);
     const [level, setLevel] = useState([]);
     const [term, setTerm] = useState([]);
@@ -44,15 +42,25 @@ const SeeStudentProfile = () => {
     }, [])
     
     const fetchCourse = async () =>{
-      const username = localStorage.getItem('username');
-      console.log("username ------------------ ", username);
-      const res = await fetch("http://localhost:5015/advisor/seeStudentProfile?advisor_id=" + username);
-      const data = await res.json()
+        //const username = params.get("student_id")
+        //console.log("username ------------------ ", username);
+        const res = await fetch("http://localhost:5002/advisor/acceptCourses?student_id=" + student_id);
+        const data = await res.json()
+
+
+
     
     
       for(var i = 0; i < data.data.length; i++){
-        data.data[i]["selected"] = false;
+        data.data[i]["selected"] = true;
       }
+
+      for(var i = 0; i < data.data.length; i++){
+            if(data.data[i]["state"] === "advisor_accepted"){
+                document.getElementsByClassName("reqButtonRight")[0].style.display = "none";
+                break;
+            }
+        }
       console.log("pls hoye ja", data);
     
       return data.data;
@@ -105,11 +113,11 @@ const SeeStudentProfile = () => {
             offerCourseId.push(SelectedList[i].id);
         }
 
-        const url = "http://localhost:5002/student/offer_course_register";
+        const url = "http://localhost:5002/advisor/accepted";
 
         Axios.post(url, {
-            "offered_course_id": offerCourseId,
-            "student_id": localStorage.getItem("username"),
+            "offered_course_id": backendData,
+            "student_id": student_id,
             }).then((response) => {
                 console.log(response);
                 //console.log(response.data.result);
@@ -125,14 +133,14 @@ const SeeStudentProfile = () => {
         <SideBarAdvisor />
         <div className='containerTitle'>
             <div className='pageTitleNew'>
-                Student's Profile
+                Course Registration Advisor
             </div>
         </div>
         <div className='offerRightSide'>
                 
                 <div className='courseDetailsReqCourse'>
                   
-                    <h3 >Student's List </h3>
+                    <h3 >{student_id}</h3>
                     <div className='detailsForm'>
                       
 
@@ -140,29 +148,41 @@ const SeeStudentProfile = () => {
                             <table className='ReqCourseTable'>
                                 <thead>
                                     <tr>
-                                        <th>Student Id</th>
-                                        <th>Link</th>
-                           
+                                        <th>Course title</th>
+                                        <th>Course label</th>
+                                        <th>Level</th>
+                                        <th>Term</th>
+                                        <th>Credit</th>
+                                        <th>Type</th>
+                                        <th>Remarks</th>
+                                        
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     {backendData.map((row)=>(
                                         <tr>
-                                            <td>{row.student_id}</td>
-                                            <td><a href={`/advisor/studentProfilie/student/${row.student_id}`}> Go to Profile</a></td>
+                                            <td>{row.course_title}</td>
+                                            <td>{row.course_label}</td>
+                                            <td>{row.level}</td>
+                                            <td>{row.term}</td>
+                                            <td>{row.credit}</td>
+                                            <td>{row.type}</td>
+                                            <td>{row.state}</td>
                                             
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
 
+                            <Button variant="success" className='reqButtonRight' type="submit" onClick = {(e)=> getSelectedRows(e)}>
+                                Accepted
+                            </Button>
+
                         </div>
                     
                     
                     </div>
-
-                    
                 </div>
 
 
@@ -171,4 +191,4 @@ const SeeStudentProfile = () => {
     )
 }
 
-export default SeeStudentProfile;
+export default AdvisorPendingCourseReg;

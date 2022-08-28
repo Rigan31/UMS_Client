@@ -40,21 +40,56 @@ const AddCourse = () => {
 
 
     return (
+        // <div>
+        // <SideBarHead />
+        // <div className='containerTitle'>
+        //     <div className='pageTitleNew'>
+        //         Offer Course List
+        //     </div>
+        // </div>
+        // <div className='rightSideCourseList'>
+        //         <div className='courseList'>
+        //             <div className='detailsForm'>
+        //                 { backendData.map((course) => (
+        //                         <Card className='singleCourseNew'>
+        //                         <Card.Body className='cardBodyChange'>
+        //                             <Card.Title>{course.course_title}</Card.Title>
+        //                             <Card.Subtitle className="mb-2 text-muted">{course.course_label}</Card.Subtitle>
+        //                             <Card.Text>
+        //                                 <p>Credit hour: {course.credit}</p>
+        //                                 <p>Level: {course.level}</p>
+        //                                 <p>Term: {course.term}</p>
+        //                                 <p>Type: {course.type}</p>
+        //                             </Card.Text>
+        //                             <Card.Link href={`/head/singleoffercourse/${course.offer_course_id}`}>Go to course</Card.Link>
+        //                         </Card.Body>
+        //                         </Card>
+        //                 ))}
+                        
+                    
+
+
+        //             </div>
+        //         </div>
+
+
+        // </div>
+        // </div>
+
         <div>
         <SideBarHead />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    Offer CourseList
-                </div>
-
-                <div className='courseDetails'>
-                    <div className='courseDetailsTitle'>
-                        Department: CSE
-                    </div>
-                    <div className='detailsForm'>
-                        { backendData.map((course) => (
-                                <Card className='singleCourse'>
-                                <Card.Body >
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                Course List
+            </div>
+        </div>
+        <div className='rightSideCourseList'>
+                <div className='courseList'>
+                    
+                        { backendData.map(course => {
+                            return(
+                                <Card className='singleCourseNew'>
+                                <Card.Body className='cardBodyChange'>
                                     <Card.Title>{course.course_title}</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">{course.course_label}</Card.Subtitle>
                                     <Card.Text>
@@ -63,15 +98,12 @@ const AddCourse = () => {
                                         <p>Term: {course.term}</p>
                                         <p>Type: {course.type}</p>
                                     </Card.Text>
-                                    <Card.Link href={`/head/singleoffercourse/${course.offer_course_id}`}>Go to course</Card.Link>
+                                    <Card.Link href={`/head/singleoffercourse/${course.offer_course_id}`}>Go to Offer course</Card.Link>
                                 </Card.Body>
                                 </Card>
-                        ))}
+                            )
+                        })}
                         
-                    
-
-
-                    </div>
                 </div>
 
 

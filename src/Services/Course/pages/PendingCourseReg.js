@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import '../assets/css/StudentRegister.css'
+import '../assets/css/StudentRegister.css'
 import Sidebar from '../../../components/layout/Sidebar'
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
@@ -8,9 +8,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import SidebarHead from '../../../components/layout/SideBarHead';
-import SideBarAdvisor from '../../../components/layout/SideBarAdvisor';
 
-const SeeStudentProfile = () => {
+const PendingCourseReg = () => {
 
     
 
@@ -24,9 +23,6 @@ const SeeStudentProfile = () => {
 
     const [backendData, setBackendData] = useState([{
 
-    }]);
-
-    const [backendDataAccepted, setBackendDataAccepted] = useState([{
     }]);
     const [level, setLevel] = useState([]);
     const [term, setTerm] = useState([]);
@@ -44,9 +40,9 @@ const SeeStudentProfile = () => {
     }, [])
     
     const fetchCourse = async () =>{
-      const username = localStorage.getItem('username');
-      console.log("username ------------------ ", username);
-      const res = await fetch("http://localhost:5015/advisor/seeStudentProfile?advisor_id=" + username);
+        const username = localStorage.getItem('username');
+        console.log("username ------------------ ", username);
+      const res = await fetch("http://localhost:5002/student/requestedCourses?student_id=" + username);
       const data = await res.json()
     
     
@@ -122,17 +118,17 @@ const SeeStudentProfile = () => {
 
     return (
         <div>
-        <SideBarAdvisor />
+        <Sidebar />
         <div className='containerTitle'>
             <div className='pageTitleNew'>
-                Student's Profile
+                Course Registration Pending
             </div>
         </div>
         <div className='offerRightSide'>
                 
                 <div className='courseDetailsReqCourse'>
                   
-                    <h3 >Student's List </h3>
+                    <h3 >Waiting for approval </h3>
                     <div className='detailsForm'>
                       
 
@@ -140,17 +136,27 @@ const SeeStudentProfile = () => {
                             <table className='ReqCourseTable'>
                                 <thead>
                                     <tr>
-                                        <th>Student Id</th>
-                                        <th>Link</th>
-                           
+                                        <th>Course title</th>
+                                        <th>Course label</th>
+                                        <th>Level</th>
+                                        <th>Term</th>
+                                        <th>Credit</th>
+                                        <th>Type</th>
+                                        <th>Remarks</th>
+                                        
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     {backendData.map((row)=>(
                                         <tr>
-                                            <td>{row.student_id}</td>
-                                            <td><a href={`/advisor/studentProfilie/student/${row.student_id}`}> Go to Profile</a></td>
+                                            <td>{row.course_title}</td>
+                                            <td>{row.course_label}</td>
+                                            <td>{row.level}</td>
+                                            <td>{row.term}</td>
+                                            <td>{row.credit}</td>
+                                            <td>{row.type}</td>
+                                            <td>{row.state}</td>
                                             
                                         </tr>
                                     ))}
@@ -161,8 +167,6 @@ const SeeStudentProfile = () => {
                     
                     
                     </div>
-
-                    
                 </div>
 
 
@@ -171,4 +175,4 @@ const SeeStudentProfile = () => {
     )
 }
 
-export default SeeStudentProfile;
+export default PendingCourseReg;

@@ -19,7 +19,7 @@ const AddCourse = () => {
         console.log("course_id: ", course_id);
         const url = `singlecourse/${course_id}`;
         console.log("url: ", url);  
-        navigate('/courselist');
+        navigate('/head/courselist');
     }
 
     const [data, setData] = useState({

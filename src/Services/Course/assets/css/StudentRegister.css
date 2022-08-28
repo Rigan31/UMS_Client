@@ -50,3 +50,26 @@ td{
     position: relative;
     left: 900px;
 }
+
+.allCourseRequest{
+    width: 100%;
+}
+.ReqCourseTable{
+    width: 100%;
+}
+.courseDetailsReqCourse{
+    position: relative;
+    top: 150px;
+    left: 5%;
+    width: 60%;
+    
+    padding: 10px;
+    background-color: white;
+    border-radius: 30px;   
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.reqButtonRight{
+    margin-top: 30px;
+    position: relative;
+    left: 92%;
+}

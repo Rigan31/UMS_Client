@@ -26,8 +26,8 @@ export default function UploadResultPage() {
 
     const get_courses= () => {
         session = document.getElementById("session").value;
-        const dept = document.getElementById("dept").value;
-        let str = "http://localhost:5004/get_courses?session_id=" + session + "&dept_id=" + dept; 
+        const teacher_id = localStorage.getItem("username");
+        let str = "http://localhost:5004/get_courses?session_id=" + session + "&teacher_id=" + teacher_id; 
         fetch(str).then(
             response => response.json()
             ).then(
@@ -89,7 +89,7 @@ export default function UploadResultPage() {
 
         let navigate = useNavigate(); 
         const routeChangeToUploadResult= () =>{ 
-            navigate('/show_result');
+            navigate('/teacher/upload_result');
         }
         const send_csv_file = (e) => {
             e.preventDefault();
@@ -109,7 +109,7 @@ export default function UploadResultPage() {
             <SideBarTeacher />
             <div class="jumbotron">
                 <h1 class="display-4" align="center">Upload Result</h1>
-                <p class="lead">Session : <select id="session" name="level" class="btn btn-secondary dropdown-toggle">
+                <p class="lead">Session : <select id="session" name="level" onChange={ get_courses } class="btn btn-secondary dropdown-toggle">
                     <option selected>Select Session</option>
                     {
                     (typeof sessionsDepts.sessions === 'undefined') ? (
@@ -122,19 +122,7 @@ export default function UploadResultPage() {
                     )
                 };
                 </select><br/><br/>
-                                Department : <select id="dept" name="level" class="btn btn-secondary dropdown-toggle" onChange={ get_courses }>
-                    <option selected>Select Department</option>
-                    {
-                    (typeof sessionsDepts.depts === 'undefined') ? (
-                        <p>loading...</p>
-                    ) : (
-                    sessionsDepts.depts.map((result, i) => (  
-                        <option value={result.id}>{result.name}</option> 
-                    )
-                    )
-                    )
-                };
-                </select><br/><br/>
+                                
                                 Course : <select name="level" class="btn btn-secondary dropdown-toggle" onChange={e => setCourse(e.target.value)}>
                     <option selected>Select Course</option>
                     {
@@ -142,7 +130,7 @@ export default function UploadResultPage() {
                         <p>loading...</p>
                     ) : (
                     courses.courses.map((result, i) => (  
-                        <option value={result.id}>{result.course_label}</option> 
+                        <option value={result.offercourseid}>{result.course_title}</option> 
                     )
                     )
                     )

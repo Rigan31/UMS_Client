@@ -59,15 +59,8 @@ const Sidebar = () => {
                 
               },
               {
-                title: "Profile",
-                itemId: "/profile",
-                activeColor: '#0069d9',
-                elemBefore: () => <CgProfile/>,
-                
-              },
-              {
                 title: "Registration",
-                itemId: "/registration",
+                itemId: "/student_register",
                 elemBefore: () => <MdAppRegistration/>,
                 
               },
@@ -76,13 +69,6 @@ const Sidebar = () => {
                   itemId: "/view_grades",
                   // Optional
                   elemBefore: () => <CgList />,
-                  
-              },
-              {
-                  title: "Apply for Scholarship",
-                  itemId: "/scholarship",
-                  // Optional
-                  elemBefore: () => <TbSchool />,
                   
               },
               {
@@ -164,7 +150,7 @@ const Sidebar = () => {
             items={[
               {
                   title: "Feedback",
-                  itemId: "/feedback",
+                  itemId: "/upload_feedback",
                   // Optional
                   elemBefore: () => <MdOutlineFeedback />,
                   

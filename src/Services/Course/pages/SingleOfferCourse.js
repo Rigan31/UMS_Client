@@ -1,6 +1,6 @@
 import React, { useEffect,  useState } from 'react'
 import '../assets/css/AddCourse.css'
-import Sidebar from '../../../components/layout/Sidebar.js'
+import SideBarHead from '../../../components/layout/SideBarHead.js'
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 import Card from 'react-bootstrap/Card';
@@ -28,7 +28,7 @@ const SingleOfferCourse= () => {
         setShow(false);
 
         const url = "http://localhost:5002/head/singleoffercourse/saveteacher"
-
+        setTeacher(teacher);
         Axios.post(url, {
             offerCourseId: offerCourseId,
             teacher: teacher,
@@ -41,8 +41,9 @@ const SingleOfferCourse= () => {
     }
     const handleShow = () => {
         setShow(true);
-        const dept_name = 'CSE';
-        const url = "http://localhost:5002/head/getTeacherList?dept_name=" + dept_name;
+        //const dept_name = 'CSE';
+        var loggedInUser = localStorage.getItem('username');
+        const url = "http://localhost:5002/head/getTeacherList?headId=" + loggedInUser;
         Axios.get(url)
         .then(res=>{
             setTeacherList(res.data.data);
@@ -111,16 +112,15 @@ const SingleOfferCourse= () => {
 
     return (
         <div>
-        <Sidebar />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    CourseList
-                </div>
+        <SideBarHead/>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                Offered Course
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
 
-                <div className='courseDetails'>
-                    <div className='courseDetailsTitle'>
-                        Department: CSE
-                    </div>
+                <div className='courseDetailsSingle'>
                     <div className='detailsForm'>
 
                     { backendData.map(course => {
@@ -128,58 +128,47 @@ const SingleOfferCourse= () => {
                     <Form onSubmit={(e)=> submit(e)}>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="formGridState">
-                                <Form.Label>Department Name</Form.Label>
-                                <Form.Select id="deptName" onChange={(e)=> handle(e)} defaultValue={course.dept_name} disabled>
-                                    <option>Choose...</option>
-                                    <option value="CSE">CSE</option>
-                                    <option value="ME">ME</option>
-                                    <option value="EEE">EEE</option>
-                                    <option value="ARCHI">ARCHI</option>
-                                </Form.Select>
-                            </Form.Group>
-                        </Row>
-                        <Row className="mb-3">
-                            <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label>Course Name</Form.Label>
+                            <Form.Group className="formGroupPadding" as={Col} controlId="formGridEmail">
+                            <Form.Label className="selectLabelMargin">Course Name</Form.Label>
                             <Form.Control type="text" id="courseName" defaultValue={course.course_title} onChange={(e)=> handle(e)} disabled/>
                             </Form.Group>
 
                             
                         </Row>
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="formGridPassword">
-                            <Form.Label>Course ID</Form.Label>
+                            <Form.Group className="formGroupPadding" as={Col} controlId="formGridPassword">
+                            <Form.Label className="selectLabelMargin">Course ID</Form.Label>
                             <Form.Control id="courseID" defaultValue={course.course_label}  onChange={(e)=> handle(e)} disabled/>
                             </Form.Group>
                         </Row>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="formGridAddress1">
-                                <Form.Label>Credit Hour</Form.Label>
+                            <Form.Group className="formGroupPadding" as={Col} controlId="formGridAddress1">
+                                <Form.Label className="selectLabelMargin">Credit Hour</Form.Label>
                                 <Form.Control type="text" id="creditHour" defaultValue={course.credit} onChange={(e)=> handle(e)} disabled/>
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="formGridAddress2">
-                                <Form.Label>Level</Form.Label>
+                            <Form.Group className="formGroupPadding" as={Col} controlId="formGridAddress2">
+                                <Form.Label className="selectLabelMargin">Level</Form.Label>
                                 <Form.Control type="text" id="level" defaultValue={course.level}  onChange={(e)=> handle(e)} disabled/>
                             </Form.Group>
                             
-                            <Form.Group as={Col} controlId="formGridCity">
-                                <Form.Label>Term</Form.Label>
+                            <Form.Group className="formGroupPadding" as={Col} controlId="formGridCity">
+                                <Form.Label className="selectLabelMargin">Term</Form.Label>
                                 <Form.Control type="text" id="term" defaultValue={course.term}  onChange={(e)=> handle(e)} disabled/>
                             </Form.Group>
                         </Row>
 
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>Type</Form.Label>
-                            <Form.Select id="type" onChange={(e)=> handle(e)} defaultValue={course.type} disabled>
+                            <Form.Group className="formGroupPadding" as={Col} controlId="formGridState">
+                            <Form.Label className="selectLabelMargin">Type</Form.Label>
+                            <Form.Control type="text" id="type" defaultValue={course.type}  onChange={(e)=> handle(e)} disabled/>
+                            {/* <Form.Select className="formSelect" id="type" onChange={(e)=> handle(e)} defaultValue={course.type} disabled>
                                 <option>Choose...</option>
                                 <option>Theory</option>
                                 <option>Sessional</option>
-                            </Form.Select>
+                            </Form.Select> */}
                             </Form.Group>
 
                         </Row>
@@ -192,8 +181,8 @@ const SingleOfferCourse= () => {
 
                     <div className='AddType'>
                     
-                    <Form.Group as={Col} controlId="formGridAddress1">
-                        <Form.Label>Teacher:   </Form.Label>
+                    <Form.Group className="formGroupPadding" as={Col} controlId="formGridAddress1">
+                        <Form.Label className="selectLabelMargin">Teacher:   </Form.Label>
                         <Form.Control type="text" id="teacher" defaultValue={teacher} disabled/>
                     </Form.Group>
                     

@@ -31,11 +31,11 @@ const OfferCourse = () => {
 
     function getCourse(e){
         e.preventDefault();
-
-        const dept_name = "CSE"
+        document.getElementsByClassName("allCourseListOffer")[0].style.display = "block";
+        const loggedInUser = localStorage.getItem('username');
 
         console.log(level, " ------ ", term, "------- ", "CSE")
-        const url = "http://localhost:5002/head/getCourse?" + "level=" + level + "&term=" + term + "&dept_name=" + dept_name;
+        const url = "http://localhost:5002/head/getCourse?" + "level=" + level + "&term=" + term + "&headId=" + loggedInUser;
 
 
         Axios.get(url)
@@ -119,20 +119,20 @@ const OfferCourse = () => {
     return (
         <div>
         <SidebarHead />
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                Offer Course
+            </div>
+        </div>
         <div className='offerRightSide'>
-                <div className='pageTitle'>
-                    Offer Course
-                </div>
-
-                <div className='courseDetails'>
-                    <div className='courseDetailsTitle'>
-                        Course List
-                    </div>
+                
+                <div className='courseDetailsOfferCourse'>
+                    
                     <div className='detailsForm'>
                         
 
                         <Form.Group className="formGroup" controlId="formGridState">
-                            <Form.Label>Level</Form.Label>
+                            <Form.Label className="selectLabelMargin">Level</Form.Label>
                             <Form.Select className='selectLevelTerm' id="level" onChange={e => setLevel(e.target.value)}>
                                 <option value="none" selected disabled hidden>Select an Option</option>
                                 <option value="1">1</option>
@@ -143,7 +143,7 @@ const OfferCourse = () => {
                         </Form.Group>
 
                         <Form.Group className="formGroup" controlId="formGridState">
-                            <Form.Label>Term</Form.Label>
+                            <Form.Label className="selectLabelMargin" >Term</Form.Label>
                             <Form.Select className='selectLevelTerm' id="term" onChange={e => setTerm(e.target.value)}>
                                 <option value="none" selected disabled hidden>Select an Option</option>
                                 <option value="1">1</option>
@@ -151,12 +151,12 @@ const OfferCourse = () => {
                             </Form.Select>
                         </Form.Group>
                         
-                        <Button variant="primary" type="submit" onClick = {(e)=> getCourse(e)}>
+                        <Button variant="primary" className="submitButton" type="submit" onClick = {(e)=> getCourse(e)}>
                             Get Course
                         </Button>
 
-                        <div className='allCourseList'>
-                            <table>
+                        <div className='allCourseListOffer'>
+                            <table className='offerCourseTable'>
                                 <thead>
                                     <tr>
                                         <th>Course title</th>
@@ -199,7 +199,7 @@ const OfferCourse = () => {
                                 </tbody>
                             </table>
 
-                            <Button variant="primary" type="submit" onClick = {(e)=> getSelectedRows(e)}>
+                            <Button variant="success" className='offerButtonRight' type="submit" onClick = {(e)=> getSelectedRows(e)}>
                                 Offer Course
                             </Button>
                         </div>

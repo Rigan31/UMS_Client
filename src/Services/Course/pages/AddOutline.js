@@ -57,7 +57,7 @@ const AddOutline = () => {
         // })
     }
 
-    const teacher_username = 'rahim12'
+    const teacher_username = localStorage.getItem("username");
     const url = 'http://localhost:5002/teacher/getassigncourse?username=' + teacher_username;
 
     useEffect(() => {
@@ -130,6 +130,7 @@ const AddOutline = () => {
         const url = 'http://localhost:5002/teacher/publishOutline?offered_course_id=' + selectedOfferCourse;
         Axios.get(url)
         .then(res=>{
+            alert("published")
             console.log(res.data)
         })
     }
@@ -148,21 +149,24 @@ const AddOutline = () => {
     return (
         <div>
         <SideBarTeacher />
-        <div className='rightSide'>
-                <div className='pageTitle'>
-                    Add outline
-                </div>
+        <div className='containerTitle'>
+            <div className='pageTitleNew'>
+                Add outline
+            </div>
+        </div>
+        <div className='rightSideAddCourse'>
+                
 
-                <div className='courseDetails'>
-                    <div className='courseDetailsTitle'>
-                        
+                <div className='courseDetailsAddCourse'>
+                    <div className='courseDetailsTitleAddCourse'>
+                        Offer course details
                     </div>
                     <div className='detailsForm'>
                         
                     
-                        <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>Select Offer course</Form.Label>
-                            <Form.Select id="assignCourse" onChange={(e) => setSelectedOfferCourse(e.target.value)} >
+                        <Form.Group as={Col} className="formGroupPadding" controlId="formGridState">
+                            <Form.Label className="selectLabelMargin" >Select Offer course</Form.Label>
+                            <Form.Select className="formSelect" id="assignCourse" onChange={(e) => setSelectedOfferCourse(e.target.value)} >
                                     <option value="none">Choose</option>
                                 { assignCourseList.map(course => (
                                     <option value={course.offercourseid}>{course.course_title}</option>
@@ -181,23 +185,26 @@ const AddOutline = () => {
                                     
                     
 
-                            <Form.Group as={Col} controlId="formGridAddress1">
-                                <Form.Label>Name:   </Form.Label>
+                            <Form.Group as={Col} className="formGroupPadding" controlId="formGridAddress1">
+                                <Form.Label className="selectLabelMargin">Name:   </Form.Label>
                                 <Form.Control type="text" id="name" defaultValue={item.name} disabled/>
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="formGridAddress1">
-                                <Form.Label>Weight:   </Form.Label>
+                            <Form.Group as={Col} className="formGroupPadding" controlId="formGridAddress1">
+                                <Form.Label className="selectLabelMargin">Weight:   </Form.Label>
                                 <Form.Control type="text" id="teacher" defaultValue={item.weight} disabled/>
                             </Form.Group>
                         
                         </div>
                     ))}
 
-                    <div className='AddButton'>
-                        <Button onClick={handleShow}>Add New Type</Button>
-                        <Button onClick={publishOutline}>Publish</Button>
-                    </div>
+                    
+                        <Button className='AddButtonNewType' onClick={handleShow}>Add New Type</Button>
+                        
+                    
+                        
+                        <Button className='AddButtonPublish' onClick={publishOutline}>Publish</Button>
+                    
 
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
@@ -205,13 +212,13 @@ const AddOutline = () => {
                         </Modal.Header>
                         <Modal.Body>
                         <Form>
-                            <Form.Group as={Col} controlId="formGridAddress1">
-                                <Form.Label>Name  </Form.Label>
+                            <Form.Group className="formGroupPadding" as={Col} controlId="formGridAddress1">
+                                <Form.Label className="selectLabelMargin">Name  </Form.Label>
                                 <Form.Control type="text" id="teacher" defaultValue={teacher} onChange={e => setName(e.target.value)} />
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="formGridAddress1">
-                                <Form.Label>Weight  </Form.Label>
+                            <Form.Group className="formGroupPadding" as={Col} controlId="formGridAddress1">
+                                <Form.Label className="selectLabelMargin">Weight  </Form.Label>
                                 <Form.Control type="text" id="teacher" defaultValue={teacher} onChange={e => setWeight(e.target.value)} />
                             </Form.Group>
                         </Form>
