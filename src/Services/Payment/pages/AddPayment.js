@@ -32,6 +32,7 @@ const AddPayment = () => {
 
     function submit(e){
         e.preventDefault();
+
         Axios.post(url, {
             student_id: data.student_id,
             amount: data.amount,
